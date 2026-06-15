@@ -11,8 +11,19 @@ config_version=5
 [application]
 
 config/name="Plonk2D"
+run/main_scene="uid://cvjh3g2netsrl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+PlonkManager="*uid://bru6faur0oe7b"
+GameState="*uid://815p2ox6btpl"
+
+[display]
+
+window/size/viewport_width=1440
+window/size/viewport_height=900
 
 [physics]
 

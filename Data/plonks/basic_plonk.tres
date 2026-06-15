@@ -1,9 +1,81 @@
 [gd_resource type="Resource" script_class="PlonkData" format=3 uid="uid://ckaa3b8owj50h"]
 
+[ext_resource type="PackedScene" uid="uid://heslfxjn244e" path="res://Scenes/plonks/Plonk.tscn" id="1_ga71h"]
 [ext_resource type="Script" uid="uid://ddbs17v3m8ufw" path="res://Scripts/resources/PlonkData.gd" id="1_m0u1m"]
+[ext_resource type="Texture2D" uid="uid://sfbv1i4erdjq" path="res://Assets/faces/raw_image/face1/face1_3.png" id="3_urrjc"]
+[ext_resource type="Texture2D" uid="uid://b0wew2ok0ejuu" path="res://Assets/faces/raw_image/face1/face1_9.png" id="4_2ff36"]
+[ext_resource type="Texture2D" uid="uid://sbvpl50om4xs" path="res://Assets/faces/raw_image/face1/face1_6.png" id="5_qlj08"]
+[ext_resource type="Texture2D" uid="uid://lxshhnnbt8nh" path="res://Assets/faces/raw_image/face1/face1_7.png" id="6_431nr"]
+[ext_resource type="Texture2D" uid="uid://ciy62sgfi00wv" path="res://Assets/faces/raw_image/face1/face1_8.png" id="7_qqv4n"]
+[ext_resource type="Texture2D" uid="uid://1f8dffl0vcxx" path="res://Assets/faces/raw_image/face1/face1_4.png" id="8_v780j"]
+[ext_resource type="Texture2D" uid="uid://dtaiberlbtld5" path="res://Assets/faces/raw_image/face1/face1_5.png" id="9_xtlx2"]
+[ext_resource type="Texture2D" uid="uid://dhurj1muemgit" path="res://Assets/faces/raw_image/face1/face1_0.png" id="10_kyyia"]
+[ext_resource type="Texture2D" uid="uid://546tv52660j6" path="res://Assets/faces/raw_image/face1/face1_1.png" id="11_gspge"]
+[ext_resource type="Texture2D" uid="uid://dqs25o0kuyme8" path="res://Assets/faces/raw_image/face1/face1_2.png" id="12_gekvg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_urrjc"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_10p36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2ff36")
+}],
+"loop": true,
+"name": &"bounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qlj08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_431nr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qqv4n")
+}],
+"loop": true,
+"name": &"fast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_urrjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_v780j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xtlx2")
+}],
+"loop": true,
+"name": &"mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_kyyia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gspge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_gekvg")
+}],
+"loop": true,
+"name": &"slow",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_m0u1m")
-id = "0"
+id = "plonk0"
 display_name = "Plonk"
+physics_material = SubResource("PhysicsMaterial_urrjc")
+scene = ExtResource("1_ga71h")
+sprite_frames = SubResource("SpriteFrames_10p36")
+shop_icon = ExtResource("3_urrjc")
 metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

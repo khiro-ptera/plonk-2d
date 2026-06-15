@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://heslfxjn244e"]
+
+[ext_resource type="Script" uid="uid://mupoetp6duw2" path="res://Scripts/components/Plonk.gd" id="1_6ok04"]
+
+[node name="Plonk" type="RigidBody2D" unique_id=1584245398]
+gravity_scale = 0.0
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_6ok04")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=127119477]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=129905004]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
