@@ -75,6 +75,7 @@ script = ExtResource("1_m0u1m")
 id = "plonk0"
 display_name = "Plonk"
 physics_material = SubResource("PhysicsMaterial_urrjc")
+radius = 12.0
 scene = ExtResource("1_ga71h")
 sprite_frames = SubResource("SpriteFrames_10p36")
 shop_icon = ExtResource("3_urrjc")

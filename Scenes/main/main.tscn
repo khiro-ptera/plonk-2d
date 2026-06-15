@@ -6,12 +6,16 @@
 [node name="Main" type="Node2D" unique_id=962967260]
 script = ExtResource("1_b20jg")
 
-[node name="GameWorld" type="Container" parent="." unique_id=1751897910]
+[node name="GameWorld" type="Control" parent="." unique_id=876361021]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="PlonkContainer" type="Control" parent="GameWorld" unique_id=1528790502]
-layout_mode = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="PlayArea" type="Node2D" parent="GameWorld" unique_id=1759446911]
 script = ExtResource("2_w1fgp")
