@@ -22,7 +22,16 @@ func _load_definitions() -> void:
 			var res := load("res://data/plonks/" + file_name) as PlonkData
 			if res:
 				definitions[res.id] = res
+				if res.unlock_plinks_threshold == 0.0:
+					GameState.unlock_plonk(res.id)  # available from start
 		file_name = dir.get_next()
+
+func get_unlocked_definitions() -> Array:
+	var unlocked := []
+	for id in definitions:
+		if GameState.unlocked_plonk_ids.has(id):
+			unlocked.append(definitions[id])
+	return unlocked
 
 func get_count_in_play(plonk_id: String) -> int:
 	var count := 0
@@ -32,7 +41,7 @@ func get_count_in_play(plonk_id: String) -> int:
 	return count
 
 func get_current_price(data: PlonkData) -> float:
-	return data.base_price * pow(data.price_exponent, get_count_in_play(data.id))
+	return snapped(data.base_price * pow(data.price_exponent, get_count_in_play(data.id) - 0), 0.1)
 
 func spawn_plonk(plonk_id: String, position: Vector2) -> void:
 	if active.size() >= GameState.max_plonks:
@@ -50,3 +59,14 @@ func spawn_plonk(plonk_id: String, position: Vector2) -> void:
 	ap.definition = data
 	ap.paid = get_current_price(data)
 	active.append(ap)
+	GameState.emit_plonk_count()
+
+func sell_plonk(plonk_id: String) -> void:
+	for i in range(active.size() - 1, -1, -1):
+		var ap: ActivePlonk = active[i]
+		if ap.definition.id == plonk_id:
+			GameState.add_plinks(ap.paid * ap.definition.sell_value_fraction)
+			ap.node.queue_free()
+			active.remove_at(i)
+			GameState.emit_plonk_count()
+			return

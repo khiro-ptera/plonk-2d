@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="PlonkData" format=3 uid="uid://bmy08no154jlr"]
+
+[ext_resource type="Script" uid="uid://ddbs17v3m8ufw" path="res://Scripts/resources/PlonkData.gd" id="1_36a86"]
+[ext_resource type="PackedScene" uid="uid://heslfxjn244e" path="res://Scenes/plonks/Plonk.tscn" id="1_v3nba"]
+[ext_resource type="Texture2D" uid="uid://bfed07gveu7eg" path="res://Assets/faces/raw_image/face2/face3.png" id="3_1fsdg"]
+[ext_resource type="Texture2D" uid="uid://dlh2xxxeuqn21" path="res://Assets/faces/raw_image/face2/face4.png" id="4_fsqhl"]
+[ext_resource type="Texture2D" uid="uid://dv616n2ke04gc" path="res://Assets/faces/raw_image/face2/face6.png" id="5_1nmtb"]
+[ext_resource type="Texture2D" uid="uid://qyatkrq10j5l" path="res://Assets/faces/raw_image/face2/face6a.png" id="6_ltct8"]
+[ext_resource type="Texture2D" uid="uid://bo8kyfnjhxyvo" path="res://Assets/faces/raw_image/face2/face3a.png" id="7_p0wmi"]
+[ext_resource type="Texture2D" uid="uid://bkfn61ocmp8fa" path="res://Assets/faces/raw_image/face2/face3b.png" id="8_xbxbu"]
+[ext_resource type="Texture2D" uid="uid://dr436d4f052p1" path="res://Assets/faces/raw_image/face2/face8.png" id="9_toug5"]
+[ext_resource type="Texture2D" uid="uid://wf4km3k62i61" path="res://Assets/faces/raw_image/face2/face8a.png" id="10_a53gm"]
+[ext_resource type="Texture2D" uid="uid://438vjl5omtop" path="res://Assets/faces/raw_image/face2/face8b.png" id="11_tj3p5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2igpp"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pk44j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fsqhl")
+}],
+"loop": true,
+"name": &"bounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1nmtb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ltct8")
+}],
+"loop": true,
+"name": &"fast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1fsdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p0wmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xbxbu")
+}],
+"loop": true,
+"name": &"mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_toug5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a53gm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tj3p5")
+}],
+"loop": true,
+"name": &"slow",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_36a86")
+id = "plonk1"
+display_name = "Chonk"
+unlock_plinks_threshold = 50.0
+base_price = 30.0
+price_exponent = 1.2
+sell_value_fraction = 0.2
+base_plinks_per_bounce = 3.0
+mass = 3.0
+physics_material = SubResource("PhysicsMaterial_2igpp")
+spawn_linear_speed = 150.0
+radius = 24.0
+scene = ExtResource("1_v3nba")
+sprite_frames = SubResource("SpriteFrames_pk44j")
+shop_icon = ExtResource("3_1fsdg")
+metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

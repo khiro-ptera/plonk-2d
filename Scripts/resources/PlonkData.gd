@@ -7,7 +7,7 @@ class_name PlonkData extends Resource
 
 # econ
 @export var base_price: float = 10.0
-@export var price_exponent: float = 1.15  # price = base_price * exponent^count_in_play
+@export var price_exponent: float = 1.15  # price = base_price * exponent^(count_in_play - 1)
 @export var sell_value_fraction: float = 0.5  # sell returns this fraction of what you paid
 @export var base_plinks_per_bounce: float = 1.0  # sell returns this fraction of what you paid
 

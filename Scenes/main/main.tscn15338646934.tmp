@@ -9,20 +9,9 @@ script = ExtResource("1_b20jg")
 
 [node name="GameWorld" type="Control" parent="." unique_id=876361021]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Background" type="ColorRect" parent="GameWorld" unique_id=845431390]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.83632696, 0.83632696, 0.83632696, 1)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="PlonkContainer" type="Control" parent="GameWorld" unique_id=1528790502]
 anchors_preset = 0
@@ -32,17 +21,18 @@ offset_bottom = 40.0
 [node name="PlayArea" type="Node2D" parent="GameWorld" unique_id=1759446911]
 script = ExtResource("2_w1fgp")
 
-[node name="CountLabel" type="Label" parent="GameWorld" unique_id=1854227454]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "0 / 10 Plonks"
-
 [node name="UI" type="CanvasLayer" parent="." unique_id=1598278949]
 script = ExtResource("3_4etoo")
 
+[node name="Background" type="ColorRect" parent="UI" unique_id=845431390]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.83632696, 0.83632696, 0.83632696, 1)
+
 [node name="TopPanel" type="PanelContainer" parent="UI" unique_id=1047532900]
-custom_minimum_size = Vector2(0, 50)
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
@@ -63,9 +53,7 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="PlinksLabel" type="Label" parent="UI/MainRightSidebar" unique_id=1495242291]
-custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-vertical_alignment = 1
 
 [node name="PlonkShopScroll" type="ScrollContainer" parent="UI/MainRightSidebar" unique_id=1737681524]
 layout_mode = 2
