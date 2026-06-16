@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="PlonkData" format=3 uid="uid://cg8ygor7ytew2"]
+
+[ext_resource type="PackedScene" uid="uid://dtsp7idag5ws7" path="res://Scenes/plonks/Bunk.tscn" id="1_8pa26"]
+[ext_resource type="Script" uid="uid://ddbs17v3m8ufw" path="res://Scripts/resources/PlonkData.gd" id="1_rn78a"]
+[ext_resource type="Texture2D" uid="uid://umqcmiw0ciwo" path="res://Assets/faces/raw_image/face6/face31.png" id="3_37dqq"]
+[ext_resource type="Texture2D" uid="uid://b0jwcr1kvd4my" path="res://Assets/faces/raw_image/face6/face31a.png" id="4_37dqq"]
+[ext_resource type="Texture2D" uid="uid://bk2vyn0dc76bd" path="res://Assets/faces/raw_image/face6/face29.png" id="4_m1xbo"]
+[ext_resource type="Texture2D" uid="uid://bxss1gdjg0tog" path="res://Assets/faces/raw_image/face6/face29a.png" id="5_v8pwe"]
+[ext_resource type="Texture2D" uid="uid://berugl71gtyhp" path="res://Assets/faces/raw_image/face6/face29b.png" id="6_mr0tc"]
+[ext_resource type="Texture2D" uid="uid://bm2jnsr8w2qhd" path="res://Assets/faces/raw_image/face6/face28.png" id="7_2qpg4"]
+[ext_resource type="Texture2D" uid="uid://dus8yuxagbk1c" path="res://Assets/faces/raw_image/face6/face28a.png" id="8_tbo5m"]
+[ext_resource type="Texture2D" uid="uid://dmxtwivymgcjx" path="res://Assets/faces/raw_image/face6/face28b.png" id="9_pxwnn"]
+[ext_resource type="Texture2D" uid="uid://c5sh84tf3ix3x" path="res://Assets/faces/raw_image/face6/face30.png" id="10_gilw5"]
+[ext_resource type="Texture2D" uid="uid://bpc6yjoka56ya" path="res://Assets/faces/raw_image/face6/face30a.png" id="11_jmxfp"]
+[ext_resource type="Texture2D" uid="uid://cr0gjy84e80ru" path="res://Assets/faces/raw_image/face6/face30b.png" id="12_3qrmf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u14hm"]
+animations = [{
+"frames": [{
+"duration": 1.25,
+"texture": ExtResource("3_37dqq")
+}, {
+"duration": 1.25,
+"texture": ExtResource("4_37dqq")
+}],
+"loop": true,
+"name": &"bounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_m1xbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v8pwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mr0tc")
+}],
+"loop": true,
+"name": &"fast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2qpg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tbo5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pxwnn")
+}],
+"loop": true,
+"name": &"mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_gilw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jmxfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3qrmf")
+}],
+"loop": true,
+"name": &"slow",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_rn78a")
+id = "plonk5"
+display_name = "Bunk"
+unlock_plinks_threshold = 18000.0
+base_price = 18000.0
+price_exponent = 1.2
+sell_value_fraction = 0.2
+base_plinks_per_bounce = 44.0
+spawn_linear_speed = 400.0
+scene = ExtResource("1_8pa26")
+sprite_frames = SubResource("SpriteFrames_u14hm")
+components = Array[String](["GravityComponent", "LeapComponent"])
+description = "bnuuy"
+shop_icon = ExtResource("3_37dqq")
+metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

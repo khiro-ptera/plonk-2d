@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dtsp7idag5ws7"]
+
+[ext_resource type="Script" uid="uid://mupoetp6duw2" path="res://Scripts/game/Plonk.gd" id="1_rmyly"]
+[ext_resource type="Script" uid="uid://borrji2t06ivn" path="res://Scripts/game/components/GravityComponent.gd" id="2_moxkb"]
+[ext_resource type="Script" uid="uid://dsqajgx31ulrm" path="res://Scripts/game/components/LeapComponent.gd" id="3_moxkb"]
+
+[node name="Plonk" type="RigidBody2D" unique_id=1584245398]
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 5
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_rmyly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=127119477]
+
+[node name="ShapeSprite" type="Polygon2D" parent="." unique_id=999133757]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=129905004]
+
+[node name="GravityComponent" type="Node" parent="." unique_id=1995975748]
+script = ExtResource("2_moxkb")
+
+[node name="LeapComponent" type="Node" parent="." unique_id=1524549210]
+script = ExtResource("3_moxkb")
+metadata/_custom_type_script = "uid://dsqajgx31ulrm"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
