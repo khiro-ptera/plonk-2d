@@ -1,5 +1,4 @@
-class_name RedirectComponent
-extends Node
+class_name RedirectComponent extends Node
 
 var _body: RigidBody2D
 var _base_speed: float

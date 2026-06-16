@@ -4,14 +4,15 @@ var definition: PlonkData
 var _bouncing: bool = false
 var _visual_rotation: float = 0.0
 var override_rotation: bool = false
+var is_clone: bool = false
 @export var max_visual_spin: float = 1.5
 
-func setup(data: PlonkData) -> void:
+func setup(data: PlonkData, radius_scale: float = 1.0) -> void:
 	$ShapeSprite.top_level = true
 	$AnimatedSprite2D.top_level = true
 	
 	definition = data
-	mass = data.mass
+	mass = data.mass * (radius_scale * radius_scale)
 	gravity_scale = 0.0
 	linear_damp = 0.0
 	linear_damp_mode = RigidBody2D.DAMP_MODE_REPLACE
@@ -21,17 +22,18 @@ func setup(data: PlonkData) -> void:
 	if data.physics_material:
 		physics_material_override = data.physics_material
 
+	var scaled_radius := data.radius * radius_scale
 	var verts: PackedVector2Array
 	match data.shape_type:
 		"Circle":
 			var shape := CircleShape2D.new()
-			shape.radius = data.radius
+			shape.radius = scaled_radius
 			$CollisionShape2D.shape = shape
-			verts = _make_circle_polygon(data.radius, 32)
+			verts = _make_circle_polygon(scaled_radius, 32)
 		"Star":
-			verts = _make_star_polygon(data.radius, data.inner_radius, data.star_points)
+			var scaled_inner := data.inner_radius * radius_scale
+			verts = _make_star_polygon(scaled_radius, scaled_inner, data.star_points)
 			$ShapeSprite.polygon = verts
-			# decompose into triangles from center for convex collision
 			for i in range(verts.size()):
 				var tri := ConvexPolygonShape2D.new()
 				tri.points = PackedVector2Array([
@@ -42,10 +44,9 @@ func setup(data: PlonkData) -> void:
 				var col := CollisionShape2D.new()
 				col.shape = tri
 				add_child(col)
-			# disable the original CollisionShape2D since we're using multiple
 			$CollisionShape2D.disabled = true
 		"Custom":
-			pass  # handled by scene
+			pass
 
 	$ShapeSprite.color = Color.WHITE
 	$ShapeSprite.polygon = verts
@@ -53,7 +54,7 @@ func setup(data: PlonkData) -> void:
 	if data.sprite_frames:
 		$AnimatedSprite2D.sprite_frames = data.sprite_frames
 		$AnimatedSprite2D.play("mid")
-	_fit_sprite_to_collider(data)
+	_fit_sprite_to_collider(data, radius_scale)
 
 	var angle := randf() * TAU
 	linear_velocity = Vector2(cos(angle), sin(angle)) * data.spawn_linear_speed
@@ -79,13 +80,13 @@ func _make_star_polygon(outer_radius: float, inner_radius: float, points: int) -
 		verts.append(Vector2(cos(a), sin(a)) * r)
 	return verts
 
-func _fit_sprite_to_collider(data: PlonkData) -> void:
+func _fit_sprite_to_collider(data: PlonkData, radius_scale: float = 1.0) -> void:
 	var fit_radius: float
 	match data.shape_type:
 		"Star":
-			fit_radius = data.inner_radius * 1.5  # slightly past inner, stays within star body
+			fit_radius = data.inner_radius * radius_scale * 1.5
 		_:
-			fit_radius = data.radius
+			fit_radius = data.radius * radius_scale
 	var scale_factor := (fit_radius * 2.0) / 100.0
 	$AnimatedSprite2D.scale = Vector2(scale_factor, scale_factor)
 

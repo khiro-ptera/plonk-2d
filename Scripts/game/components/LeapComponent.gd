@@ -1,5 +1,4 @@
-class_name LeapComponent
-extends Node
+class_name LeapComponent extends Node
 
 var _body: RigidBody2D
 var _base_speed: float
