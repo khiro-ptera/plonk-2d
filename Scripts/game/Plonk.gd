@@ -3,6 +3,7 @@ extends RigidBody2D
 var definition: PlonkData
 var _bouncing: bool = false
 var _visual_rotation: float = 0.0
+var override_rotation: bool = false
 @export var max_visual_spin: float = 1.5
 
 func setup(data: PlonkData) -> void:
@@ -89,14 +90,16 @@ func _fit_sprite_to_collider(data: PlonkData) -> void:
 	$AnimatedSprite2D.scale = Vector2(scale_factor, scale_factor)
 
 func _physics_process(delta: float) -> void:
-	var clamped_spin := clampf(angular_velocity, -max_visual_spin, max_visual_spin)
-	_visual_rotation += clamped_spin * delta
-
-	$ShapeSprite.global_position = global_position
-	$ShapeSprite.rotation = rotation  # follows physics body exactly
-
-	$AnimatedSprite2D.global_position = global_position
-	$AnimatedSprite2D.rotation = _visual_rotation  # capped
+	if not override_rotation:
+		var clamped_spin := clampf(angular_velocity, -max_visual_spin, max_visual_spin)
+		_visual_rotation += clamped_spin * delta
+		$ShapeSprite.global_position = global_position
+		$ShapeSprite.rotation = rotation
+		$AnimatedSprite2D.global_position = global_position
+		$AnimatedSprite2D.rotation = _visual_rotation
+	else:
+		$ShapeSprite.global_position = global_position
+		$AnimatedSprite2D.global_position = global_position
 
 	if _bouncing or definition == null:
 		return
