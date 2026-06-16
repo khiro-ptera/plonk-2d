@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cvjh3g2netsrl"]
 
-[ext_resource type="Script" uid="uid://cdo5cneiwri3x" path="res://Scripts/components/Main.gd" id="1_b20jg"]
-[ext_resource type="Script" uid="uid://jvg5twlbtgji" path="res://Scripts/components/PlayArea.gd" id="2_w1fgp"]
-[ext_resource type="Script" uid="uid://ckb2cnwf6b2jx" path="res://Scripts/components/UI.gd" id="3_4etoo"]
+[ext_resource type="Script" uid="uid://cdo5cneiwri3x" path="res://Scripts/game/Main.gd" id="1_b20jg"]
+[ext_resource type="Script" uid="uid://jvg5twlbtgji" path="res://Scripts/game/PlayArea.gd" id="2_w1fgp"]
+[ext_resource type="Script" uid="uid://ckb2cnwf6b2jx" path="res://Scripts/game/UI.gd" id="3_4etoo"]
 
 [node name="Main" type="Node2D" unique_id=962967260]
 script = ExtResource("1_b20jg")

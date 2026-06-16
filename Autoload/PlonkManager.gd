@@ -31,6 +31,7 @@ func get_unlocked_definitions() -> Array:
 	for id in definitions:
 		if GameState.unlocked_plonk_ids.has(id):
 			unlocked.append(definitions[id])
+	unlocked.sort_custom(func(a, b): return a.unlock_plinks_threshold < b.unlock_plinks_threshold)
 	return unlocked
 
 func get_count_in_play(plonk_id: String) -> int:

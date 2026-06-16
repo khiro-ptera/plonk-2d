@@ -1,7 +1,7 @@
 @tool
 class_name PlayArea extends Node2D
 
-@export var box_size: Vector2 = Vector2(400, 400):
+@export var box_size: Vector2 = Vector2(750, 750):
 	set(value):
 		box_size = value
 		if Engine.is_editor_hint():

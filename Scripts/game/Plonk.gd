@@ -56,6 +56,11 @@ func setup(data: PlonkData) -> void:
 
 	var angle := randf() * TAU
 	linear_velocity = Vector2(cos(angle), sin(angle)) * data.spawn_linear_speed
+	
+	for component_name in data.components:
+		var component := get_node_or_null(component_name)
+		if component and component.has_method("activate"):
+			component.activate(self)
 
 func _make_circle_polygon(radius: float, points: int) -> PackedVector2Array:
 	var verts := PackedVector2Array()
