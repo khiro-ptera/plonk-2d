@@ -29,7 +29,7 @@ func _build_sidebar() -> void:
 	plinks_label.text = "Plinks: " + str(GameState.plinks)
 
 func _on_plinks_changed(new_amount: float) -> void:
-	plinks_label.text = "Plinks: " + str(snappedf(new_amount, 0.01))
+	plinks_label.text = "Plinks: " + GameState.format_number(new_amount)
 	_check_unlocks(new_amount)
 	_update_button_prices()
 	# _populate_shop()
@@ -55,7 +55,7 @@ func _update_button_prices() -> void:
 			var data := PlonkManager.definitions.get(plonk_id) as PlonkData
 			if data:
 				var price := PlonkManager.get_current_price(data)
-				buy_btn.text = data.display_name + "\n" + str(snappedf(price, 0.1)) + " plinks"
+				buy_btn.text = data.display_name + "\n" + GameState.format_number(price) + " plinks"
 
 func _populate_shop() -> void:
 	for child in plonk_list.get_children():
@@ -70,7 +70,7 @@ func _add_shop_button(data: PlonkData) -> void:
 
 	var buy_btn := Button.new()
 	buy_btn.set_meta("plonk_id", data.id)
-	buy_btn.text = data.display_name + "\n" + str(snappedf(price, 0.1)) + " plinks"
+	buy_btn.text = data.display_name + "\n" + GameState.format_number(price) + " plinks"
 	buy_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	buy_btn.pressed.connect(_on_buy_pressed.bind(data.id))
 	row.add_child(buy_btn)

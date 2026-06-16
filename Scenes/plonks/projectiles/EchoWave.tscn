@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b00dlwme3srad"]
+
+[ext_resource type="Script" uid="uid://d1525moeoji1s" path="res://Scripts/game/EchoWave.gd" id="1_ey86x"]
+[ext_resource type="Texture2D" uid="uid://bnjxl6nb3wgcu" path="res://Assets/projectiles/wave2/w0.png" id="2_g0k11"]
+[ext_resource type="Texture2D" uid="uid://mi2k4dehelah" path="res://Assets/projectiles/wave2/w2.png" id="3_eqltp"]
+[ext_resource type="Texture2D" uid="uid://dstxdx8mct6" path="res://Assets/projectiles/wave2/w3.png" id="4_ypgun"]
+[ext_resource type="Texture2D" uid="uid://bmj28q337s2vh" path="res://Assets/projectiles/wave2/w4.png" id="5_fqeqv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lo1wg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g0k11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eqltp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ypgun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fqeqv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EchoWave" type="Area2D" unique_id=713180847]
+script = ExtResource("1_ey86x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=502884966]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1563357668]
+sprite_frames = SubResource("SpriteFrames_lo1wg")
+frame = 3
+frame_progress = 0.19747038

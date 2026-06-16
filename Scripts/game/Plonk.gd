@@ -117,7 +117,7 @@ func _play(anim: String) -> void:
 		$AnimatedSprite2D.play(anim)
 
 func _on_body_entered(_body: Node) -> void:
-	print("bonk")
+	# print("bonk")
 	$AnimatedSprite2D.play("bounce")
 	_bouncing = true
 	if definition:

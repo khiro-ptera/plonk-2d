@@ -26,3 +26,15 @@ func unlock_plonk(id: String) -> void:
 		max_plonks += 2
 		unlocked_plonk_ids.append(id)
 		emit_plonk_count()
+
+func format_number(value: float) -> String:
+	if value >= 1_000_000_000.0:
+		var expo: float = floor(log(value) / log(10))
+		var mantissa := value / pow(10, expo)
+		return str(snappedf(mantissa, 0.01)) + "e" + str(int(expo))
+	elif value >= 1_000_000.0:
+		return str(snappedf(value / 1_000_000.0, 0.01)) + "M"
+	elif value >= 1_000.0:
+		return str(snappedf(value / 1_000.0, 0.01)) + "K"
+	else:
+		return str(snappedf(value, 0.01))
