@@ -81,5 +81,6 @@ spawn_linear_speed = 150.0
 radius = 24.0
 scene = ExtResource("1_v3nba")
 sprite_frames = SubResource("SpriteFrames_pk44j")
+description = "Just a BIG guy."
 shop_icon = ExtResource("3_1fsdg")
 metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

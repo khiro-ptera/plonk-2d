@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="PlonkData" format=3 uid="uid://ce0bc5h8brdoi"]
+
+[ext_resource type="PackedScene" uid="uid://heslfxjn244e" path="res://Scenes/plonks/Plonk.tscn" id="1_e4tua"]
+[ext_resource type="Script" uid="uid://ddbs17v3m8ufw" path="res://Scripts/resources/PlonkData.gd" id="1_glfgj"]
+[ext_resource type="Texture2D" uid="uid://bn562umcq04gw" path="res://Assets/faces/raw_image/face3/face11a.png" id="3_smsub"]
+[ext_resource type="Texture2D" uid="uid://dkb7nm6djuc13" path="res://Assets/faces/raw_image/face3/face12.png" id="4_qq5wg"]
+[ext_resource type="Texture2D" uid="uid://b82dbahys3amh" path="res://Assets/faces/raw_image/face3/face11.png" id="5_gyau6"]
+[ext_resource type="Texture2D" uid="uid://c6rlwdtiityfv" path="res://Assets/faces/raw_image/face3/face11b.png" id="6_e0vp0"]
+[ext_resource type="Texture2D" uid="uid://b86ym23kkphwr" path="res://Assets/faces/raw_image/face3/face9.png" id="7_2dhp6"]
+[ext_resource type="Texture2D" uid="uid://hlw2bogoxi6l" path="res://Assets/faces/raw_image/face3/face9a.png" id="8_jgaum"]
+[ext_resource type="Texture2D" uid="uid://dh4rm2fecqwy3" path="res://Assets/faces/raw_image/face3/face9b.png" id="9_ljmyn"]
+[ext_resource type="Texture2D" uid="uid://8m42n7302g5n" path="res://Assets/faces/raw_image/face3/face10.png" id="10_e6lyj"]
+[ext_resource type="Texture2D" uid="uid://uikks5bvx2il" path="res://Assets/faces/raw_image/face3/face10a.png" id="11_gneqg"]
+[ext_resource type="Texture2D" uid="uid://cjd2o7cqsgjri" path="res://Assets/faces/raw_image/face3/face10b.png" id="12_1smhe"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1waf3"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bgqxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qq5wg")
+}],
+"loop": true,
+"name": &"bounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_gyau6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_smsub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_e0vp0")
+}],
+"loop": true,
+"name": &"fast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2dhp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jgaum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ljmyn")
+}],
+"loop": true,
+"name": &"mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_e6lyj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gneqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1smhe")
+}],
+"loop": true,
+"name": &"slow",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_glfgj")
+id = "plonk2"
+display_name = "Starplunk"
+unlock_plinks_threshold = 555.5
+base_price = 555.5
+price_exponent = 1.5
+base_plinks_per_bounce = 5.0
+mass = 5.0
+physics_material = SubResource("PhysicsMaterial_1waf3")
+spawn_linear_speed = 355.5
+max_angular_velocity = 5555.55
+shape_type = "Star"
+radius = 25.0
+inner_radius = 15.0
+scene = ExtResource("1_e4tua")
+sprite_frames = SubResource("SpriteFrames_bgqxy")
+description = "Twinkle twinkle."
+shop_icon = ExtResource("3_smsub")
+metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

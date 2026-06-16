@@ -17,7 +17,10 @@ class_name PlonkData extends Resource
 @export var spawn_linear_speed: float = 200.0
 @export var max_angular_velocity: float = 10.0
 @export_enum("Circle", "Star", "Custom") var shape_type: String = "Circle"
-@export var radius: float = 16.0  # only used for Circle shape_type
+@export var radius: float = 16.0 
+
+@export var star_points: int = 5 # only used for Star shape_type
+@export var inner_radius: float = 6.0 # only used for Star shape_type
 
 # vis
 @export var scene: PackedScene

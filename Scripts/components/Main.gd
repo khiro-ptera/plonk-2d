@@ -19,8 +19,13 @@ func _ready() -> void:
 
 	# PlonkManager.spawn_plonk("plonk0", play_area.position + play_area.box_size / 2.0)
 	$UI._populate_shop()
-
 	
 func _on_plonk_count_changed(current: int, maximum: int) -> void:
 	var label := $GameWorld/CountLabel
 	label.text = str(current) + " / " + str(maximum) + " plonks"
+
+# REMOVE IN PROD: CHEAT
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_D:
+			GameState.add_plinks(GameState.plinks)

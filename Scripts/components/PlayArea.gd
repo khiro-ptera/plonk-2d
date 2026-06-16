@@ -40,7 +40,7 @@ func _build_visuals() -> void:
 			child.queue_free()
 	
 	var bg := ColorRect.new()
-	bg.color = Color(0.0, 0.0, 0.0, 1.0)
+	bg.color = Color(0.4, 0.4, 0.4, 1.0)
 	bg.size = box_size
 	bg.position = Vector2.ZERO
 	bg.z_index = -1

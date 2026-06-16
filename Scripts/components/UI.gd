@@ -31,13 +31,31 @@ func _build_sidebar() -> void:
 func _on_plinks_changed(new_amount: float) -> void:
 	plinks_label.text = "Plinks: " + str(snappedf(new_amount, 0.01))
 	_check_unlocks(new_amount)
-	_populate_shop()
+	_update_button_prices()
+	# _populate_shop()
 
 func _check_unlocks(current_plinks: float) -> void:
+	var any_new := false
 	for id in PlonkManager.definitions:
 		var data: PlonkData = PlonkManager.definitions[id]
 		if data.unlock_plinks_threshold > 0.0 and current_plinks >= data.unlock_plinks_threshold:
-			GameState.unlock_plonk(id)
+			if not GameState.unlocked_plonk_ids.has(id):
+				GameState.unlock_plonk(id)
+				any_new = true
+	if any_new:
+		_populate_shop()
+
+func _update_button_prices() -> void:
+	for row in plonk_list.get_children():
+		if row is HBoxContainer:
+			var buy_btn := row.get_child(0) as Button
+			if not buy_btn:
+				continue
+			var plonk_id: String = buy_btn.get_meta("plonk_id")
+			var data := PlonkManager.definitions.get(plonk_id) as PlonkData
+			if data:
+				var price := PlonkManager.get_current_price(data)
+				buy_btn.text = data.display_name + "\n" + str(snappedf(price, 0.1)) + " plinks"
 
 func _populate_shop() -> void:
 	for child in plonk_list.get_children():
@@ -49,14 +67,14 @@ func _add_shop_button(data: PlonkData) -> void:
 	var price := PlonkManager.get_current_price(data)
 	var row := HBoxContainer.new()
 	plonk_list.add_child(row)
-	
-	# print("button price for ", data.id, ": ", price)
+
 	var buy_btn := Button.new()
+	buy_btn.set_meta("plonk_id", data.id)
 	buy_btn.text = data.display_name + "\n" + str(snappedf(price, 0.1)) + " plinks"
 	buy_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	buy_btn.pressed.connect(_on_buy_pressed.bind(data.id))
 	row.add_child(buy_btn)
-	
+
 	var sell_btn := Button.new()
 	sell_btn.text = "Sell"
 	sell_btn.pressed.connect(_on_sell_pressed.bind(data.id))
