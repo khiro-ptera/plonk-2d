@@ -5,6 +5,8 @@ var _bouncing: bool = false
 var _visual_rotation: float = 0.0
 var override_rotation: bool = false
 var is_clone: bool = false
+var _out_of_bounds_timer: float = 0.0
+var _is_out_of_bounds: bool = false
 @export var max_visual_spin: float = 1.5
 
 func setup(data: PlonkData, radius_scale: float = 1.0) -> void:
@@ -91,6 +93,7 @@ func _fit_sprite_to_collider(data: PlonkData, radius_scale: float = 1.0) -> void
 	$AnimatedSprite2D.scale = Vector2(scale_factor, scale_factor)
 
 func _physics_process(delta: float) -> void:
+	_check_bounds(delta)
 	if not override_rotation:
 		var clamped_spin := clampf(angular_velocity, -max_visual_spin, max_visual_spin)
 		_visual_rotation += clamped_spin * delta
@@ -126,3 +129,36 @@ func _on_body_entered(_body: Node) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "bounce":
 		_bouncing = false
+
+func _check_bounds(delta: float) -> void:
+	if GameState.play_area == null:
+		return
+	var pa: Node2D = GameState.play_area
+	var bounds_min: Vector2 = pa.position
+	var bounds_max: Vector2 = pa.position + Vector2(pa.get("box_size"))
+	var inside := (
+		global_position.x > bounds_min.x and
+		global_position.x < bounds_max.x and
+		global_position.y > bounds_min.y and
+		global_position.y < bounds_max.y
+	)
+	if not inside:
+		_out_of_bounds_timer += delta
+		if not _is_out_of_bounds:
+			_is_out_of_bounds = true
+			_out_of_bounds_timer = 0.0
+		if _out_of_bounds_timer >= 3.0:
+			_return_to_center()
+	else:
+		_is_out_of_bounds = false
+		_out_of_bounds_timer = 0.0
+
+func _return_to_center() -> void:
+	var pa: Node2D = GameState.play_area
+	var center: Vector2 = pa.position + Vector2(pa.get("box_size")) / 2.0
+	global_position = center
+	var angle := randf() * TAU
+	linear_velocity = Vector2(cos(angle), sin(angle)) * definition.spawn_linear_speed
+	angular_velocity = 0.0
+	_is_out_of_bounds = false
+	_out_of_bounds_timer = 0.0
