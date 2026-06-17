@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cdo5cneiwri3x" path="res://Scripts/game/Main.gd" id="1_b20jg"]
 [ext_resource type="Script" uid="uid://jvg5twlbtgji" path="res://Scripts/game/PlayArea.gd" id="2_w1fgp"]
 [ext_resource type="Script" uid="uid://ckb2cnwf6b2jx" path="res://Scripts/game/UI.gd" id="3_4etoo"]
+[ext_resource type="Script" uid="uid://b0ju1xlij36y4" path="res://Scripts/game/WeatherLayer.gd" id="3_wcurd"]
 
 [node name="Main" type="Node2D" unique_id=962967260]
 script = ExtResource("1_b20jg")
@@ -37,6 +38,10 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "0 / 10 Plonks"
+
+[node name="WeatherLayer" type="CanvasLayer" parent="." unique_id=1766383741]
+layer = 5
+script = ExtResource("3_wcurd")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1598278949]
 script = ExtResource("3_4etoo")

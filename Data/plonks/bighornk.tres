@@ -86,6 +86,6 @@ radius = 20.0
 scene = ExtResource("1_1lss8")
 sprite_frames = SubResource("SpriteFrames_nv6dw")
 components = Array[String](["RedirectComponent"])
-description = "Ramramramram"
+description = "Stops and charges when slowed."
 shop_icon = ExtResource("3_83a04")
 metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

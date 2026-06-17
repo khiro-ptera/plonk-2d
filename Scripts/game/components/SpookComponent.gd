@@ -38,7 +38,6 @@ func _on_plonk_entered(other: Node) -> void:
 		return
 	if not is_instance_valid(other):
 		return
-	# dont affect other spoonks — they collide physically already
 	if other.get_node_or_null("SpookComponent") != null:
 		return
 	var other_body := other as RigidBody2D

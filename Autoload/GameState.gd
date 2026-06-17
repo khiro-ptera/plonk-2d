@@ -4,6 +4,8 @@ signal plinks_changed(new_amount: float)
 
 var plinks: float = 15.0
 var max_plonks: int = 10
+var production_multiplier: float = 1.0
+var plonk_speed_multiplier: float = 1.0
 var unlocked_plonk_ids: Array[String] = []
 
 var play_area: Node2D = null

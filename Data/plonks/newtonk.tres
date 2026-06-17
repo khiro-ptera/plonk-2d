@@ -85,6 +85,6 @@ spawn_linear_speed = 500.0
 scene = ExtResource("1_rvlrc")
 sprite_frames = SubResource("SpriteFrames_k0i48")
 components = Array[String](["GravityComponent"])
-description = "A bit of an airhead."
+description = "Bouncy ball!"
 shop_icon = ExtResource("3_d1lpl")
 metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

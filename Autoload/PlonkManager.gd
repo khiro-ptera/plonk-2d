@@ -55,6 +55,7 @@ func spawn_plonk(plonk_id: String, position: Vector2) -> void:
 	get_tree().get_root().get_node("Main/GameWorld/PlonkContainer").add_child(node)
 	node.position = position
 	node.setup(data)
+	node.linear_velocity *= GameState.plonk_speed_multiplier
 	var ap := ActivePlonk.new()
 	ap.node = node
 	ap.definition = data

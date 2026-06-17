@@ -86,5 +86,6 @@ radius = 12.0
 scene = ExtResource("1_tvj64")
 sprite_frames = SubResource("SpriteFrames_qw1ke")
 components = Array[String](["SplitComponent"])
+description = "Spawns effigies on collision."
 shop_icon = ExtResource("7_vlyfq")
 metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

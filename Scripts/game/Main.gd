@@ -29,3 +29,5 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_D:
 			GameState.add_plinks(GameState.plinks)
+		if event.keycode == KEY_W:
+			WeatherManager._roll_weather()

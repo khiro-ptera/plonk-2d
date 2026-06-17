@@ -82,6 +82,6 @@ radius = 18.0
 scene = ExtResource("1_bv06v")
 sprite_frames = SubResource("SpriteFrames_ncqpt")
 components = Array[String](["EchoComponent"])
-description = "AAAAA"
+description = "AAAAA! EMITS ECHOS AT NEARBY PLONKS!"
 shop_icon = ExtResource("11_1v8h3")
 metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

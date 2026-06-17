@@ -83,6 +83,6 @@ spawn_linear_speed = 400.0
 scene = ExtResource("1_8pa26")
 sprite_frames = SubResource("SpriteFrames_u14hm")
 components = Array[String](["GravityComponent", "LeapComponent"])
-description = "bnuuy"
+description = "Bnuuy! Stops and leaps when touching the floor."
 shop_icon = ExtResource("3_37dqq")
 metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

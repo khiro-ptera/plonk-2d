@@ -85,6 +85,6 @@ radius = 18.0
 scene = ExtResource("1_wf3xk")
 sprite_frames = SubResource("SpriteFrames_k527q")
 components = Array[String](["SpookComponent"])
-description = "it's fright night"
+description = "It's fright night! Passes through most plonks and speeds them up."
 shop_icon = ExtResource("7_5pw1s")
 metadata/_custom_type_script = "uid://ddbs17v3m8ufw"
