@@ -30,6 +30,7 @@ func _build_walls() -> void:
 		col.shape = shape
 		var body := StaticBody2D.new()
 		body.position = wall_data[0]
+		body.collision_layer = 3
 		body.add_child(col)  # add shape to body BEFORE adding body to scene
 		add_child(body)
 	# _build_visuals()
