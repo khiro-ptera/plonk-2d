@@ -1,0 +1,89 @@
+[gd_resource type="Resource" script_class="PlonkData" format=3 uid="uid://qucya2g13487"]
+
+[ext_resource type="PackedScene" uid="uid://dfutyy2onflkk" path="res://Scenes/plonks/Positronk.tscn" id="1_a2iee"]
+[ext_resource type="Script" uid="uid://ddbs17v3m8ufw" path="res://Scripts/resources/PlonkData.gd" id="1_ksrrf"]
+[ext_resource type="Texture2D" uid="uid://c61lw7m46r2h3" path="res://Assets/faces/raw_image/face11/face25.png" id="3_vyu27"]
+[ext_resource type="Texture2D" uid="uid://d2lb1rehapcn7" path="res://Assets/faces/raw_image/face11/face27.png" id="4_em50l"]
+[ext_resource type="Texture2D" uid="uid://d0pmc4vb1htus" path="res://Assets/faces/raw_image/face11/face27a.png" id="5_bkl5g"]
+[ext_resource type="Texture2D" uid="uid://j4uhadtwvva4" path="res://Assets/faces/raw_image/face11/face27b.png" id="6_p2vjp"]
+[ext_resource type="Texture2D" uid="uid://dnyseiybcuxhl" path="res://Assets/faces/raw_image/face11/face24.png" id="7_1iu0m"]
+[ext_resource type="Texture2D" uid="uid://67o6a5a3ceoh" path="res://Assets/faces/raw_image/face11/face24a.png" id="8_7xip0"]
+[ext_resource type="Texture2D" uid="uid://o4xwluedy3to" path="res://Assets/faces/raw_image/face11/face24b.png" id="9_wr2lo"]
+[ext_resource type="Texture2D" uid="uid://bd1td36ft5lnx" path="res://Assets/faces/raw_image/face11/face26.png" id="10_vciah"]
+[ext_resource type="Texture2D" uid="uid://c1y78k8j7r1uj" path="res://Assets/faces/raw_image/face11/face26a.png" id="11_xefl4"]
+[ext_resource type="Texture2D" uid="uid://dexpxb72mgibf" path="res://Assets/faces/raw_image/face11/face26b.png" id="12_mm33a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vcl5o"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hscti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vyu27")
+}],
+"loop": true,
+"name": &"bounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_em50l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bkl5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p2vjp")
+}],
+"loop": true,
+"name": &"fast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_1iu0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7xip0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wr2lo")
+}],
+"loop": true,
+"name": &"mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_vciah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xefl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mm33a")
+}],
+"loop": true,
+"name": &"slow",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_ksrrf")
+id = "plonk11"
+display_name = "Positronk"
+unlock_plinks_threshold = 80000000.0
+base_price = 80000000.0
+price_exponent = 1.2
+base_plinks_per_bounce = 123456.7
+mass = 2.0
+physics_material = SubResource("PhysicsMaterial_vcl5o")
+spawn_linear_speed = 300.0
+scene = ExtResource("1_a2iee")
+sprite_frames = SubResource("SpriteFrames_hscti")
+components = Array[String](["CoinTrailComponent"])
+description = "Drops a trail of valuable coins!"
+shop_icon = ExtResource("8_7xip0")
+metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

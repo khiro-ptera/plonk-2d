@@ -4,6 +4,7 @@ var definition: PlonkData
 var _bouncing: bool = false
 var _visual_rotation: float = 0.0
 var override_rotation: bool = false
+var animation_locked: bool = false
 var is_clone: bool = false
 var _out_of_bounds_timer: float = 0.0
 var _is_out_of_bounds: bool = false
@@ -106,7 +107,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.global_position = global_position
 		return
 
-	if _bouncing or definition == null:
+	if _bouncing or animation_locked or definition == null:
 		return
 	var ratio := linear_velocity.length() / definition.spawn_linear_speed
 	if ratio < 0.7:

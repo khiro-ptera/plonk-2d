@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dfutyy2onflkk"]
+
+[ext_resource type="Script" uid="uid://mupoetp6duw2" path="res://Scripts/game/Plonk.gd" id="1_i7072"]
+[ext_resource type="Script" uid="uid://bmpegda1b63ai" path="res://Scripts/game/components/CoinTrailComponent.gd" id="2_vv4qg"]
+
+[node name="Plonk" type="RigidBody2D" unique_id=1584245398]
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 5
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_i7072")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=127119477]
+
+[node name="ShapeSprite" type="Polygon2D" parent="." unique_id=999133757]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=129905004]
+
+[node name="CoinTrailComponent" type="Node" parent="." unique_id=1540954777]
+script = ExtResource("2_vv4qg")
+metadata/_custom_type_script = "uid://bmpegda1b63ai"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

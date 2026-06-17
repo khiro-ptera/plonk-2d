@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bq62oy3eatsc4"]
+
+[ext_resource type="Script" uid="uid://i8fd834derce" path="res://Scripts/game/PosiCoin.gd" id="1_6fkp1"]
+[ext_resource type="Texture2D" uid="uid://csp6phhfjvyxm" path="res://Assets/projectiles/coin1/1.png" id="1_hotm7"]
+[ext_resource type="Texture2D" uid="uid://cvhoi4vmgwuk1" path="res://Assets/projectiles/coin1/2.png" id="2_6fkp1"]
+[ext_resource type="Texture2D" uid="uid://bplcrnt17fuka" path="res://Assets/projectiles/coin1/3.png" id="3_774hp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fkp1"]
+radius = 40.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ds8io"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hotm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6fkp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_774hp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PosiCoin" type="Area2D" unique_id=1483790995]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_6fkp1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1046453060]
+shape = SubResource("CircleShape2D_6fkp1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=181786194]
+sprite_frames = SubResource("SpriteFrames_ds8io")
