@@ -41,7 +41,7 @@ func _on_plinks_changed(amount: float) -> void:
 func _schedule_next() -> void:
 	if _unlocked_weathers.size() == 0:
 		return
-	var wait: float = randf_range(30.0, 90.0)
+	var wait: float = randf_range(40.0, 75.0)
 	_weather_timer.start(wait)
 
 func _roll_weather() -> void:
@@ -50,7 +50,7 @@ func _roll_weather() -> void:
 	var idx := randi() % _unlocked_weathers.size()
 	_active_weather = _unlocked_weathers[idx]
 	weather_started.emit(_active_weather)
-	_duration_timer.start(10.0)  # each weather lasts 10 seconds total
+	_duration_timer.start(10.0)  # change
 
 func _end_weather() -> void:
 	weather_ended.emit(_active_weather)

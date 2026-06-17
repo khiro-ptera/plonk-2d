@@ -41,7 +41,7 @@ func _on_plonk_entered(other: Node) -> void:
 	if other.get_node_or_null("SpookComponent") != null:
 		return
 	var other_body := other as RigidBody2D
-	var speed_boost: float = _body.linear_velocity.length() * 0.25
+	var speed_boost: float = _body.linear_velocity.length() * 0.5
 	var current_speed: float = other_body.linear_velocity.length()
 	# add speed in the direction the other plonk is already moving
 	if other_body.linear_velocity.length() > 0.0:

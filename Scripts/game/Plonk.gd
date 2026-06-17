@@ -104,6 +104,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		$ShapeSprite.global_position = global_position
 		$AnimatedSprite2D.global_position = global_position
+		return
 
 	if _bouncing or definition == null:
 		return
