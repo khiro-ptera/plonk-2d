@@ -1,13 +1,21 @@
-# UI.gd
 extends CanvasLayer
 
 @onready var plinks_label: Label = $MainRightSidebar/PlinksLabel
 @onready var plonk_list: VBoxContainer = $MainRightSidebar/PlonkShopScroll/PlonkList
 
+@onready var info_icon_container: Control = $LeftSidebar/InfoPanel/InfoScroll/InfoContent/InfoIconContainer
+@onready var info_icon: TextureRect = $LeftSidebar/InfoPanel/InfoScroll/InfoContent/InfoIconContainer/InfoIcon
+@onready var info_title: Label = $LeftSidebar/InfoPanel/InfoScroll/InfoContent/InfoTitle
+@onready var info_description: Label = $LeftSidebar/InfoPanel/InfoScroll/InfoContent/InfoDescription
+@onready var weather_label: Label = $LeftSidebar/WeatherPanel/WeatherScroll/WeatherContent/WeatherLabel
+
 func _ready() -> void:
 	_build_top_panel()
 	_build_sidebar()
+	_build_left_sidebar()
 	GameState.plinks_changed.connect(_on_plinks_changed)
+	WeatherManager.weather_started.connect(_on_weather_started)
+	WeatherManager.weather_ended.connect(_on_weather_ended)
 	#_populate_shop()
 
 func _build_top_panel() -> void:
@@ -18,12 +26,14 @@ func _build_top_panel() -> void:
 	label.text = "Plonk!"
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 
+# right side
+
 func _build_sidebar() -> void:
 	var sidebar := $MainRightSidebar
 	sidebar.anchor_left = 1.0
 	sidebar.anchor_right = 1.0
 	sidebar.anchor_bottom = 1.0
-	sidebar.offset_left = -200.0  # sidebar width
+	sidebar.offset_left = -240.0  
 	sidebar.offset_top = 0.0
 
 	plinks_label.text = "Plinks: " + str(GameState.plinks)
@@ -73,6 +83,8 @@ func _add_shop_button(data: PlonkData) -> void:
 	buy_btn.text = data.display_name + "\n" + GameState.format_number(price) + " plinks"
 	buy_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	buy_btn.pressed.connect(_on_buy_pressed.bind(data.id))
+	buy_btn.mouse_entered.connect(_show_plonk_info.bind(data))
+	# buy_btn.mouse_exited.connect(_clear_plonk_info)
 	row.add_child(buy_btn)
 
 	var sell_btn := Button.new()
@@ -103,3 +115,67 @@ func _on_sell_pressed(plonk_id: String) -> void:
 		return
 	PlonkManager.sell_plonk(plonk_id)
 	_populate_shop()
+
+# left side
+
+func _build_left_sidebar() -> void:
+	var left := $LeftSidebar
+	left.anchor_left = 0.0
+	left.anchor_top = 0.0
+	left.anchor_bottom = 1.0
+	left.offset_left = 12.0
+	left.offset_top = 60.0
+	left.offset_right = 252.0
+
+	var info_panel := $LeftSidebar/InfoPanel
+	info_panel.custom_minimum_size = Vector2(0, 300)
+	info_panel.size_flags_vertical = Control.SIZE_FILL
+
+	var weather_panel := $LeftSidebar/WeatherPanel
+	weather_panel.custom_minimum_size = Vector2(0, 150)
+	weather_panel.size_flags_vertical = Control.SIZE_FILL
+	
+	info_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info_title.autowrap_mode = TextServer.AUTOWRAP_WORD
+	info_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+
+	info_description.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info_description.autowrap_mode = TextServer.AUTOWRAP_WORD
+
+	weather_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	weather_label.autowrap_mode = TextServer.AUTOWRAP_WORD
+	weather_label.text = "A Normal Day In Plonkland"
+	
+	info_icon_container.custom_minimum_size = Vector2(128, 128)
+	info_icon_container.size = Vector2(128, 128)
+	info_icon_container.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	info_icon_container.clip_contents = true
+
+	info_icon.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
+	
+	
+
+func _show_plonk_info(data: PlonkData) -> void:
+	info_icon.texture = data.shop_icon
+	if data.shop_icon:
+		var tex_size: Vector2 = data.shop_icon.get_size()
+		var canvas_size: float = 300.0
+		var display_scale: float = 128.0 / canvas_size
+		info_icon.custom_minimum_size = tex_size * display_scale
+		info_icon.size = tex_size * display_scale
+		info_icon.scale = Vector2(display_scale, display_scale)
+		var scaled_size: Vector2 = tex_size * display_scale
+		info_icon.position = (Vector2(128, 128) - scaled_size) / 2.0
+	info_title.text = data.display_name
+	info_description.text = data.description
+
+func _clear_plonk_info() -> void:
+	info_icon.texture = null
+	info_title.text = ""
+	info_description.text = ""
+
+func _on_weather_started(weather_id: String) -> void:
+	weather_label.text = "Current weather: " + weather_id.capitalize()
+
+func _on_weather_ended(_weather_id: String) -> void:
+	weather_label.text = "No weather active"

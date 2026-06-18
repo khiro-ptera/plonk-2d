@@ -5,6 +5,17 @@
 [ext_resource type="Script" uid="uid://ckb2cnwf6b2jx" path="res://Scripts/game/UI.gd" id="3_4etoo"]
 [ext_resource type="Script" uid="uid://b0ju1xlij36y4" path="res://Scripts/game/WeatherLayer.gd" id="3_wcurd"]
 
+[sub_resource type="Gradient" id="Gradient_wcurd"]
+offsets = PackedFloat32Array(0.5522876, 1)
+colors = PackedColorArray(0.25565878, 0.25565878, 0.25565878, 1, 0.6484881, 0.6484881, 0.6484881, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_brlrh"]
+gradient = SubResource("Gradient_wcurd")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4jhlv"]
+texture = SubResource("GradientTexture2D_brlrh")
+
 [node name="Main" type="Node2D" unique_id=962967260]
 script = ExtResource("1_b20jg")
 
@@ -79,3 +90,60 @@ horizontal_scroll_mode = 0
 
 [node name="PlonkList" type="VBoxContainer" parent="UI/MainRightSidebar/PlonkShopScroll" unique_id=1774677795]
 layout_mode = 2
+
+[node name="LeftSidebar" type="VBoxContainer" parent="UI" unique_id=572804274]
+custom_minimum_size = Vector2(240, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InfoPanel" type="PanelContainer" parent="UI/LeftSidebar" unique_id=124531007]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_4jhlv")
+
+[node name="InfoScroll" type="ScrollContainer" parent="UI/LeftSidebar/InfoPanel" unique_id=1057066334]
+layout_mode = 2
+
+[node name="InfoContent" type="VBoxContainer" parent="UI/LeftSidebar/InfoPanel/InfoScroll" unique_id=1277998424]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InfoIconContainer" type="Control" parent="UI/LeftSidebar/InfoPanel/InfoScroll/InfoContent" unique_id=263921618]
+clip_contents = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="InfoIcon" type="TextureRect" parent="UI/LeftSidebar/InfoPanel/InfoScroll/InfoContent/InfoIconContainer" unique_id=2044467760]
+layout_mode = 0
+offset_top = 68.0
+offset_right = 64.0
+offset_bottom = 68.0
+
+[node name="InfoTitle" type="Label" parent="UI/LeftSidebar/InfoPanel/InfoScroll/InfoContent" unique_id=1917824009]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="InfoDescription" type="Label" parent="UI/LeftSidebar/InfoPanel/InfoScroll/InfoContent" unique_id=357876540]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="WeatherPanel" type="PanelContainer" parent="UI/LeftSidebar" unique_id=1098242528]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="WeatherScroll" type="ScrollContainer" parent="UI/LeftSidebar/WeatherPanel" unique_id=220815220]
+layout_mode = 2
+
+[node name="WeatherContent" type="VBoxContainer" parent="UI/LeftSidebar/WeatherPanel/WeatherScroll" unique_id=1055135012]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="WeatherLabel" type="Label" parent="UI/LeftSidebar/WeatherPanel/WeatherScroll/WeatherContent" unique_id=918150500]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1

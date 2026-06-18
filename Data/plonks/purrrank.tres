@@ -98,6 +98,6 @@ radius = 24.0
 scene = ExtResource("1_g88mt")
 sprite_frames = SubResource("SpriteFrames_r3387")
 components = Array[String](["PirateComponent"])
-description = "Pulls plonks towarrrd itself."
+description = "Pulls plonks towarrrd itself. Sometimes the tarrrget gets lodged."
 shop_icon = ExtResource("3_acn7m")
 metadata/_custom_type_script = "uid://ddbs17v3m8ufw"
