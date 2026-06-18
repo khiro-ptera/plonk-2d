@@ -16,7 +16,7 @@ func activate(body: RigidBody2D) -> void:
 	_schedule_next()
 
 func _schedule_next() -> void:
-	_cooldown_timer.start(randf_range(4.0, 16.0))
+	_cooldown_timer.start(randf_range(4.0, 8.0))
 
 func _start_teleport() -> void:
 	if not is_instance_valid(_body):
@@ -83,7 +83,7 @@ func _pick_teleport_point(start_pos: Vector2) -> Vector2:
 	var box_size: Vector2 = pa.get("box_size")
 	var bounds_min: Vector2 = pa.position
 	var bounds_max: Vector2 = pa.position + box_size
-	var min_length: float = 100.0
+	var min_length: float = 144.0
 
 	var horizontal := randf() < 0.5
 
