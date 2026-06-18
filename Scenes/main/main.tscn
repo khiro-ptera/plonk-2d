@@ -240,10 +240,14 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="DialogueText" type="Label" parent="UI/DialogueOverlay/DialogueBox" unique_id=1986404606]
+custom_minimum_size = Vector2(400, 0)
+custom_maximum_size = Vector2(1000, -1)
 layout_mode = 2
+size_flags_horizontal = 4
 label_settings = SubResource("LabelSettings_7y5iv")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="CharacterContainer" type="Control" parent="UI/DialogueOverlay" unique_id=844507578]
 custom_minimum_size = Vector2(300, 300)

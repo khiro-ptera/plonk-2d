@@ -17,10 +17,12 @@ func _ready() -> void:
 	for child in get_children():
 		if child is Control:
 			child.mouse_filter = Control.MOUSE_FILTER_PASS
-
+	
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	DialogueManager.dialogue_line_changed.connect(_on_line_changed)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	
+	advance_arrow.play("default")
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:

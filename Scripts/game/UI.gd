@@ -165,6 +165,7 @@ func _build_left_sidebar() -> void:
 	lock_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var lock_sprite = lock_overlay.get_node_or_null("LockSprite")
 	if lock_sprite:
+		lock_sprite.play("default")
 		# wait one frame for lock_overlay's size to be finalized, then center
 		lock_overlay.resized.connect(func():
 			lock_sprite.position = lock_overlay.size / 2.0
