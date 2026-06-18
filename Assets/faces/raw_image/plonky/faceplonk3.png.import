@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1g0abdbwhny"
-path="res://.godot/imported/faceplonk2a.png-8a56c919f22fcfa571df0ef09b020af2.ctex"
+uid="uid://b7ovydv02fhes"
+path="res://.godot/imported/faceplonk3.png-6aa93a8ccd3b03228f0d20452cf2131b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/faces/raw_image/faceplonk2a.png"
-dest_files=["res://.godot/imported/faceplonk2a.png-8a56c919f22fcfa571df0ef09b020af2.ctex"]
+source_file="res://Assets/faces/raw_image/plonky/faceplonk3.png"
+dest_files=["res://.godot/imported/faceplonk3.png-6aa93a8ccd3b03228f0d20452cf2131b.ctex"]
 
 [params]
 

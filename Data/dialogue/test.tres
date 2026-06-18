@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://dj2xlsvjwjn5n"]
+
+[ext_resource type="Texture2D" uid="uid://bs4l0clxqlpaa" path="res://Assets/faces/raw_image/plonky/faceplonk.png" id="1_4pkpy"]
+[ext_resource type="Script" uid="uid://djpi4cndwb7he" path="res://Scripts/resources/DialogueData.gd" id="1_ftmkc"]
+[ext_resource type="Texture2D" uid="uid://c1cexxb0231hj" path="res://Assets/faces/raw_image/plonky/faceplonka.png" id="2_bbauh"]
+[ext_resource type="Texture2D" uid="uid://do7xnxltxvp2w" path="res://Assets/faces/raw_image/plonky/faceplonkb.png" id="3_tip5s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ef5y3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4pkpy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bbauh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tip5s")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_ftmkc")
+id = "test"
+character_sprite_frames = SubResource("SpriteFrames_ef5y3")
+lines = Array[String](["test!", "i am a test dialogue", "if you see me YOU ARE CHEAITNG or i forgot to remove soemthing from prod lol"])
+trigger_condition = {
+"type": "manual"
+}
+metadata/_custom_type_script = "uid://djpi4cndwb7he"

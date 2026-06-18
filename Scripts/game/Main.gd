@@ -24,10 +24,14 @@ func _on_plonk_count_changed(current: int, maximum: int) -> void:
 	var label := $GameWorld/CountLabel
 	label.text = str(current) + " / " + str(maximum) + " plonks"
 
-# REMOVE IN PROD: CHEAT
+# REMOVE IN PROD: CHEAT/TESTS
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_D:
 			GameState.add_plinks(GameState.plinks)
 		if event.keycode == KEY_W:
 			WeatherManager._roll_weather()
+		if event.keycode == KEY_T:
+			DialogueManager.trigger_dialogue("test")
+		if event.keycode == KEY_Y:
+			DialogueManager.trigger_dialogue("test2")

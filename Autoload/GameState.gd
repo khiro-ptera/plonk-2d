@@ -1,6 +1,7 @@
 extends Node
 
 signal plinks_changed(new_amount: float)
+signal plonk_unlocked(id: String)
 
 var plinks: float = 15.0
 var max_plonks: int = 10
@@ -29,6 +30,7 @@ func unlock_plonk(id: String) -> void:
 		max_plonks += 2
 		unlocked_plonk_ids.append(id)
 		emit_plonk_count()
+		plonk_unlocked.emit(id)
 
 func format_number(value: float) -> String:
 	if value >= 1_000_000_000.0:

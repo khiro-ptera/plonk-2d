@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://b2tesg625nc5u" path="res://Assets/ui/lock/1.png" id="5_b3x3g"]
 [ext_resource type="Texture2D" uid="uid://cydj4t2mvfpc2" path="res://Assets/ui/lock/2.png" id="6_hgq70"]
 [ext_resource type="Texture2D" uid="uid://r0b2km65r51d" path="res://Assets/ui/lock/3.png" id="7_8lqer"]
+[ext_resource type="Script" uid="uid://ddled512bu3x8" path="res://Scripts/game/DialogueOverlay.gd" id="8_7y5iv"]
+[ext_resource type="Texture2D" uid="uid://bddewvrf0tt0v" path="res://Assets/ui/next/1.png" id="8_ra8v3"]
+[ext_resource type="Texture2D" uid="uid://dwwtn5hlpkfpv" path="res://Assets/ui/next/2.png" id="9_7y5iv"]
+[ext_resource type="Texture2D" uid="uid://bsa5je0q38t3q" path="res://Assets/ui/next/3.png" id="10_io28c"]
 
 [sub_resource type="Gradient" id="Gradient_wcurd"]
 offsets = PackedFloat32Array(0.5522876, 1)
@@ -30,6 +34,28 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_8lqer")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7y5iv"]
+font_size = 48
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ra8v3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7y5iv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_io28c")
 }],
 "loop": 1,
 "name": &"default",
@@ -191,3 +217,74 @@ layout_mode = 2
 
 [node name="LegendaryList" type="VBoxContainer" parent="UI/LeftSidebar/LegendaryPanel/LegendaryContent/LegendaryScroll" unique_id=1548300953]
 layout_mode = 2
+
+[node name="DialogueOverlay" type="Control" parent="UI" unique_id=112908396]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("8_7y5iv")
+
+[node name="DialogueBox" type="PanelContainer" parent="UI/DialogueOverlay" unique_id=87698394]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogueText" type="Label" parent="UI/DialogueOverlay/DialogueBox" unique_id=1986404606]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_7y5iv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharacterContainer" type="Control" parent="UI/DialogueOverlay" unique_id=844507578]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -300.0
+offset_right = 300.0
+grow_vertical = 0
+
+[node name="CharacterViewport" type="SubViewport" parent="UI/DialogueOverlay/CharacterContainer" unique_id=738451243]
+transparent_bg = true
+size = Vector2i(200, 200)
+
+[node name="CharacterShape" type="Polygon2D" parent="UI/DialogueOverlay/CharacterContainer/CharacterViewport" unique_id=1991529989]
+
+[node name="CharacterSprite" type="AnimatedSprite2D" parent="UI/DialogueOverlay/CharacterContainer/CharacterViewport" unique_id=1931065669]
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+
+[node name="CharacterDisplay" type="TextureRect" parent="UI/DialogueOverlay/CharacterContainer" unique_id=921725698]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ArrowContainer" type="Control" parent="UI/DialogueOverlay" unique_id=1729696395]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="AdvanceArrow" type="AnimatedSprite2D" parent="UI/DialogueOverlay/ArrowContainer" unique_id=1995313486]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[connection signal="gui_input" from="UI/DialogueOverlay" to="UI/DialogueOverlay" method="_on_gui_input"]

@@ -23,7 +23,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_oq73f")
 }],
-"loop": true,
+"loop": 1,
 "name": &"bounce",
 "speed": 5.0
 }, {
@@ -37,7 +37,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_by35c")
 }],
-"loop": true,
+"loop": 1,
 "name": &"fast",
 "speed": 5.0
 }, {
@@ -51,7 +51,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_whhxo")
 }],
-"loop": true,
+"loop": 1,
 "name": &"mid",
 "speed": 5.0
 }, {
@@ -65,7 +65,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_ovfeg")
 }],
-"loop": true,
+"loop": 1,
 "name": &"slow",
 "speed": 5.0
 }]
