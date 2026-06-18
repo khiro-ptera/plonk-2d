@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Plonk2D"
 run/main_scene="uid://cvjh3g2netsrl"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]

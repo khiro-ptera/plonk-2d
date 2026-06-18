@@ -31,7 +31,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_8lqer")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -131,8 +131,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="InfoIconContainer" type="Control" parent="UI/LeftSidebar/InfoPanel/InfoScroll/InfoContent" unique_id=263921618]
-clip_contents = true
 custom_minimum_size = Vector2(128, 128)
+clip_contents = true
 layout_mode = 2
 
 [node name="InfoIcon" type="TextureRect" parent="UI/LeftSidebar/InfoPanel/InfoScroll/InfoContent/InfoIconContainer" unique_id=2044467760]

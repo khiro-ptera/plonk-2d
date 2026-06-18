@@ -19,7 +19,7 @@ func _load_definitions() -> void:
 	var file_name := dir.get_next()
 	while file_name != "":
 		if file_name.ends_with(".tres"):
-			var res := load("res://data/plonks/" + file_name) as PlonkData
+			var res := load("res://Data/plonks/" + file_name) as PlonkData
 			if res:
 				definitions[res.id] = res
 				if res.unlock_plinks_threshold == 0.0:

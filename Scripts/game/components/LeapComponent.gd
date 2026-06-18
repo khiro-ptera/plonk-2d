@@ -3,7 +3,7 @@ class_name LeapComponent extends Node
 var _body: RigidBody2D
 var _base_speed: float
 var _leaping: bool = false
-var _bottom_wall: StaticBody2D = null
+# var _bottom_wall: StaticBody2D = null
 
 func activate(body: RigidBody2D) -> void:
 	_body = body
