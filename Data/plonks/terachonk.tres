@@ -1,0 +1,94 @@
+[gd_resource type="Resource" script_class="PlonkData" format=3 uid="uid://df6a8vtq1b64h"]
+
+[ext_resource type="PackedScene" uid="uid://heslfxjn244e" path="res://Scenes/plonks/Plonk.tscn" id="1_6un15"]
+[ext_resource type="Script" uid="uid://ddbs17v3m8ufw" path="res://Scripts/resources/PlonkData.gd" id="1_eauwh"]
+[ext_resource type="Texture2D" uid="uid://nsu87kj0s1yu" path="res://Assets/faces/raw_image/lface1/1.png" id="3_8ljni"]
+[ext_resource type="Texture2D" uid="uid://bkbt8e5gno6rt" path="res://Assets/faces/raw_image/lface1/10.png" id="4_oq73f"]
+[ext_resource type="Texture2D" uid="uid://bww4y3vlf8mjq" path="res://Assets/faces/raw_image/lface1/7.png" id="5_i1slo"]
+[ext_resource type="Texture2D" uid="uid://d1ht0do84r64o" path="res://Assets/faces/raw_image/lface1/8.png" id="6_ndur1"]
+[ext_resource type="Texture2D" uid="uid://dtpstu8k50lnt" path="res://Assets/faces/raw_image/lface1/9.png" id="7_by35c"]
+[ext_resource type="Texture2D" uid="uid://2ll2s51i186u" path="res://Assets/faces/raw_image/lface1/2.png" id="8_weq1m"]
+[ext_resource type="Texture2D" uid="uid://beore4uhek4b8" path="res://Assets/faces/raw_image/lface1/3.png" id="9_whhxo"]
+[ext_resource type="Texture2D" uid="uid://bceunx1w03hca" path="res://Assets/faces/raw_image/lface1/4.png" id="10_wtld4"]
+[ext_resource type="Texture2D" uid="uid://ch1ppmr41mriq" path="res://Assets/faces/raw_image/lface1/5.png" id="11_tk6q7"]
+[ext_resource type="Texture2D" uid="uid://k7xnipymw0jq" path="res://Assets/faces/raw_image/lface1/6.png" id="12_ovfeg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c2axo"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ap8dd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_oq73f")
+}],
+"loop": true,
+"name": &"bounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_i1slo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ndur1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_by35c")
+}],
+"loop": true,
+"name": &"fast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8ljni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_weq1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_whhxo")
+}],
+"loop": true,
+"name": &"mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_wtld4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tk6q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ovfeg")
+}],
+"loop": true,
+"name": &"slow",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_eauwh")
+id = "plonkl0"
+display_name = "Terachonk"
+base_price = 5000000.0
+sell_value_fraction = 0.1
+base_plinks_per_bounce = 10000.0
+mass = 50.0
+physics_material = SubResource("PhysicsMaterial_c2axo")
+spawn_linear_speed = 150.0
+radius = 100.0
+scene = ExtResource("1_6un15")
+sprite_frames = SubResource("SpriteFrames_ap8dd")
+description = "One to rule them all."
+shop_icon = ExtResource("3_8ljni")
+is_legendary = true
+unlock_condition = {
+"amount": 30,
+"plonk_id": "plonk1",
+"type": "simultaneous_count"
+}
+metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

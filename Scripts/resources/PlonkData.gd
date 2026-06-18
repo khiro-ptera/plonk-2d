@@ -34,7 +34,8 @@ class_name PlonkData extends Resource
 @export var description: String = ""
 @export var shop_icon: Texture2D  # small icon for the shop tile, separate from spritesheet
 
-# unlock ex. { "type": "plinks", "amount": 500 }
-# or { "type": "stat", "stat": "total_bounces", "amount": 100 }
-
-# compontnents ex. ["GravityComponent", "SuckComponent"]
+@export var is_legendary: bool = false
+# unlock_condition examples:
+#   { "type": "plinks", "amount": 500.0 }
+#   { "type": "simultaneous_count", "plonk_id": "plonk1", "amount": 30 }
+@export var unlock_condition: Dictionary = {}

@@ -7,6 +7,7 @@ var max_plonks: int = 10
 var production_multiplier: float = 1.0
 var plonk_speed_multiplier: float = 1.0
 var unlocked_plonk_ids: Array[String] = []
+var owned_legendary_ids: Array[String] = []
 
 var play_area: Node2D = null
 
@@ -40,3 +41,11 @@ func format_number(value: float) -> String:
 		return str(snappedf(value / 1_000.0, 0.01)) + "K"
 	else:
 		return str(snappedf(value, 0.01))
+
+var unlocked_legendary_ids: Array[String] = []
+signal legendary_unlocked(id: String)
+
+func unlock_legendary(id: String) -> void:
+	if not unlocked_legendary_ids.has(id):
+		unlocked_legendary_ids.append(id)
+		legendary_unlocked.emit(id)

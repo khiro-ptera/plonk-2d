@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://jvg5twlbtgji" path="res://Scripts/game/PlayArea.gd" id="2_w1fgp"]
 [ext_resource type="Script" uid="uid://ckb2cnwf6b2jx" path="res://Scripts/game/UI.gd" id="3_4etoo"]
 [ext_resource type="Script" uid="uid://b0ju1xlij36y4" path="res://Scripts/game/WeatherLayer.gd" id="3_wcurd"]
+[ext_resource type="Texture2D" uid="uid://b2tesg625nc5u" path="res://Assets/ui/lock/1.png" id="5_b3x3g"]
+[ext_resource type="Texture2D" uid="uid://cydj4t2mvfpc2" path="res://Assets/ui/lock/2.png" id="6_hgq70"]
+[ext_resource type="Texture2D" uid="uid://r0b2km65r51d" path="res://Assets/ui/lock/3.png" id="7_8lqer"]
 
 [sub_resource type="Gradient" id="Gradient_wcurd"]
 offsets = PackedFloat32Array(0.5522876, 1)
@@ -15,6 +18,23 @@ fill_from = Vector2(1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4jhlv"]
 texture = SubResource("GradientTexture2D_brlrh")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ra8v3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_b3x3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hgq70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8lqer")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node2D" unique_id=962967260]
 script = ExtResource("1_b20jg")
@@ -147,3 +167,27 @@ layout_mode = 2
 size_flags_vertical = 3
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LegendaryPanel" type="PanelContainer" parent="UI/LeftSidebar" unique_id=1457016864]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LockOverlay" type="Control" parent="UI/LeftSidebar/LegendaryPanel" unique_id=1115331863]
+layout_mode = 2
+
+[node name="LockSprite" type="AnimatedSprite2D" parent="UI/LeftSidebar/LegendaryPanel/LockOverlay" unique_id=590178670]
+sprite_frames = SubResource("SpriteFrames_ra8v3")
+
+[node name="LegendaryContent" type="VBoxContainer" parent="UI/LeftSidebar/LegendaryPanel" unique_id=1944907830]
+layout_mode = 2
+
+[node name="LegendaryTitle" type="Label" parent="UI/LeftSidebar/LegendaryPanel/LegendaryContent" unique_id=1650434462]
+layout_mode = 2
+text = "Plonks of Legend"
+horizontal_alignment = 1
+
+[node name="LegendaryScroll" type="ScrollContainer" parent="UI/LeftSidebar/LegendaryPanel/LegendaryContent" unique_id=1588405215]
+layout_mode = 2
+
+[node name="LegendaryList" type="VBoxContainer" parent="UI/LeftSidebar/LegendaryPanel/LegendaryContent/LegendaryScroll" unique_id=1548300953]
+layout_mode = 2

@@ -9,6 +9,10 @@ extends CanvasLayer
 @onready var info_description: Label = $LeftSidebar/InfoPanel/InfoScroll/InfoContent/InfoDescription
 @onready var weather_label: Label = $LeftSidebar/WeatherPanel/WeatherScroll/WeatherContent/WeatherLabel
 
+@onready var legendary_panel: PanelContainer = $LeftSidebar/LegendaryPanel
+@onready var lock_overlay: Control = $LeftSidebar/LegendaryPanel/LockOverlay
+@onready var legendary_list: VBoxContainer = $LeftSidebar/LegendaryPanel/LegendaryContent/LegendaryScroll/LegendaryList
+
 func _ready() -> void:
 	_build_top_panel()
 	_build_sidebar()
@@ -17,6 +21,8 @@ func _ready() -> void:
 	WeatherManager.weather_started.connect(_on_weather_started)
 	WeatherManager.weather_ended.connect(_on_weather_ended)
 	#_populate_shop()
+	GameState.legendary_unlocked.connect(_on_legendary_unlocked)
+	_update_legendary_lock_state()
 
 func _build_top_panel() -> void:
 	var panel := $TopPanel
@@ -100,9 +106,9 @@ func _on_buy_pressed(plonk_id: String) -> void:
 		return
 	var price := PlonkManager.get_current_price(data)
 	if GameState.plinks < price:
-		print(GameState.plinks)
-		print(price)
-		print(PlonkManager.get_current_price(data))
+		# print(GameState.plinks)
+		# print(price)
+		# print(PlonkManager.get_current_price(data))
 		return
 	var pa: Node2D = GameState.play_area
 	var center: Vector2 = pa.position + Vector2(pa.get("box_size")) / 2.0
@@ -135,6 +141,9 @@ func _build_left_sidebar() -> void:
 	weather_panel.custom_minimum_size = Vector2(0, 150)
 	weather_panel.size_flags_vertical = Control.SIZE_FILL
 	
+	legendary_panel.custom_minimum_size = Vector2(0, 200)
+	legendary_panel.size_flags_vertical = Control.SIZE_FILL
+	
 	info_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	info_title.autowrap_mode = TextServer.AUTOWRAP_WORD
 	info_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -153,6 +162,24 @@ func _build_left_sidebar() -> void:
 
 	info_icon.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
 	
+	lock_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var lock_sprite = lock_overlay.get_node_or_null("LockSprite")
+	if lock_sprite:
+		# wait one frame for lock_overlay's size to be finalized, then center
+		lock_overlay.resized.connect(func():
+			lock_sprite.position = lock_overlay.size / 2.0
+		)
+	
+	var legendary_content := $LeftSidebar/LegendaryPanel/LegendaryContent
+	legendary_content.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	legendary_content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+
+	var legendary_scroll := $LeftSidebar/LegendaryPanel/LegendaryContent/LegendaryScroll
+	legendary_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	legendary_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+
+	legendary_list.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	legendary_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	
 
 func _show_plonk_info(data: PlonkData) -> void:
@@ -178,4 +205,75 @@ func _on_weather_started(weather_id: String) -> void:
 	weather_label.text = "Current weather: " + weather_id.capitalize()
 
 func _on_weather_ended(_weather_id: String) -> void:
-	weather_label.text = "No weather active"
+	weather_label.text = "A Normal Day In Plonkland"
+
+func _update_legendary_lock_state() -> void:
+	lock_overlay.visible = GameState.unlocked_legendary_ids.size() == 0
+	if not lock_overlay.visible:
+		_populate_legendary_shop()
+
+func _on_legendary_unlocked(_id: String) -> void:
+	_update_legendary_lock_state()
+	_populate_legendary_shop()
+
+func _populate_legendary_shop() -> void:
+	for child in legendary_list.get_children():
+		child.queue_free()
+	# print("populating legendary shop, unlocked ids: ", GameState.unlocked_legendary_ids)
+	for id in GameState.unlocked_legendary_ids:
+		var data := PlonkManager.definitions.get(id) as PlonkData
+		# print("found data for ", id, ": ", data)
+		if data:
+			_add_legendary_shop_button(data)
+
+func _add_legendary_shop_button(data: PlonkData) -> void:
+	var row := HBoxContainer.new()
+	legendary_list.add_child(row)
+
+	var btn := Button.new()
+	btn.set_meta("plonk_id", data.id)
+	btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	btn.mouse_entered.connect(_show_plonk_info.bind(data))
+	# btn.mouse_exited.connect(_clear_plonk_info)
+	row.add_child(btn)
+
+	_refresh_legendary_button(btn, data)
+	# print("button added: ", btn.text, " visible: ", btn.visible, " size: ", btn.size, " global_pos: ", btn.global_position)
+
+func _refresh_legendary_button(btn: Button, data: PlonkData) -> void:
+	for connection in btn.pressed.get_connections():
+		btn.pressed.disconnect(connection.callable)
+
+	if GameState.owned_legendary_ids.has(data.id):
+		var sell_value := _get_legendary_sell_value(data)
+		btn.text = "Sell " + data.display_name + "\n" + GameState.format_number(sell_value) + " plinks"
+		btn.pressed.connect(_on_legendary_sell_pressed.bind(data.id))
+	else:
+		var price := PlonkManager.get_current_price(data)
+		btn.text = data.display_name + "\n" + GameState.format_number(price) + " plinks"
+		btn.pressed.connect(_on_legendary_buy_pressed.bind(data.id))
+
+func _get_legendary_sell_value(data: PlonkData) -> float:
+	for ap in PlonkManager.active:
+		if ap.definition.id == data.id:
+			return ap.paid * ap.definition.sell_value_fraction
+	return 0.0
+
+func _on_legendary_buy_pressed(plonk_id: String) -> void:
+	var data := PlonkManager.definitions.get(plonk_id) as PlonkData
+	if not data:
+		return
+	if GameState.owned_legendary_ids.has(plonk_id):
+		return
+	var price := PlonkManager.get_current_price(data)
+	if GameState.plinks < price:
+		return
+	var pa: Node2D = GameState.play_area
+	var center: Vector2 = pa.position + Vector2(pa.get("box_size")) / 2.0
+	PlonkManager.spawn_plonk(plonk_id, center)
+	GameState.spend_plinks(price)
+	_populate_legendary_shop.call_deferred()
+
+func _on_legendary_sell_pressed(plonk_id: String) -> void:
+	PlonkManager.sell_plonk(plonk_id)
+	_populate_legendary_shop()

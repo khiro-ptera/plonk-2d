@@ -29,8 +29,11 @@ func _load_definitions() -> void:
 func get_unlocked_definitions() -> Array:
 	var unlocked := []
 	for id in definitions:
+		var data: PlonkData = definitions[id]
+		if data.is_legendary:
+			continue
 		if GameState.unlocked_plonk_ids.has(id):
-			unlocked.append(definitions[id])
+			unlocked.append(data)
 	unlocked.sort_custom(func(a, b): return a.unlock_plinks_threshold < b.unlock_plinks_threshold)
 	return unlocked
 
@@ -51,6 +54,10 @@ func spawn_plonk(plonk_id: String, position: Vector2) -> void:
 	if not data or not data.scene:
 		push_error("PlonkManager: missing scene for " + plonk_id)
 		return
+	if data.is_legendary and GameState.owned_legendary_ids.has(plonk_id):
+		return
+	if data.is_legendary:
+		GameState.owned_legendary_ids.append(plonk_id)
 	var node := data.scene.instantiate() as RigidBody2D
 	get_tree().get_root().get_node("Main/GameWorld/PlonkContainer").add_child(node)
 	node.position = position
@@ -62,6 +69,7 @@ func spawn_plonk(plonk_id: String, position: Vector2) -> void:
 	ap.paid = get_current_price(data)
 	active.append(ap)
 	GameState.emit_plonk_count()
+	_check_legendary_unlocks()
 
 func sell_plonk(plonk_id: String) -> void:
 	for i in range(active.size() - 1, -1, -1):
@@ -70,5 +78,29 @@ func sell_plonk(plonk_id: String) -> void:
 			GameState.add_plinks(ap.paid * ap.definition.sell_value_fraction)
 			ap.node.queue_free()
 			active.remove_at(i)
+			if ap.definition.is_legendary:
+				GameState.owned_legendary_ids.erase(plonk_id)
 			GameState.emit_plonk_count()
+			_check_legendary_unlocks()
 			return
+
+func _check_legendary_unlocks() -> void:
+	for id in definitions:
+		var data: PlonkData = definitions[id]
+		if not data.is_legendary:
+			continue
+		if GameState.unlocked_legendary_ids.has(id):
+			continue
+		if _meets_condition(data.unlock_condition):
+			GameState.unlock_legendary(id)
+
+func _meets_condition(condition: Dictionary) -> bool:
+	match condition.get("type", ""):
+		"plinks":
+			return GameState.plinks >= condition.get("amount", 0.0)
+		"simultaneous_count":
+			var target_id: String = condition.get("plonk_id", "")
+			var amount: int = condition.get("amount", 0)
+			return get_count_in_play(target_id) >= amount
+		_:
+			return false
