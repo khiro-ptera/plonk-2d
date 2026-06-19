@@ -22,7 +22,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_fsqhl")
 }],
-"loop": true,
+"loop": 1,
 "name": &"bounce",
 "speed": 5.0
 }, {
@@ -33,7 +33,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_ltct8")
 }],
-"loop": true,
+"loop": 1,
 "name": &"fast",
 "speed": 5.0
 }, {
@@ -47,7 +47,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("8_xbxbu")
 }],
-"loop": true,
+"loop": 1,
 "name": &"mid",
 "speed": 5.0
 }, {
@@ -61,7 +61,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("11_tj3p5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"slow",
 "speed": 5.0
 }]
@@ -70,9 +70,9 @@ animations = [{
 script = ExtResource("1_36a86")
 id = "plonk1"
 display_name = "Chonk"
-unlock_plinks_threshold = 30.0
-base_price = 30.0
-price_exponent = 1.2
+unlock_plinks_threshold = 25.0
+base_price = 25.0
+price_exponent = 1.25
 sell_value_fraction = 0.2
 base_plinks_per_bounce = 3.0
 mass = 3.0

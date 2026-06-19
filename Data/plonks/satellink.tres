@@ -1,0 +1,89 @@
+[gd_resource type="Resource" script_class="PlonkData" format=3 uid="uid://7hw24mn6cfjk"]
+
+[ext_resource type="PackedScene" uid="uid://8sjyuithohpn" path="res://Scenes/plonks/Satellink.tscn" id="1_8oeok"]
+[ext_resource type="Script" uid="uid://ddbs17v3m8ufw" path="res://Scripts/resources/PlonkData.gd" id="1_35o2r"]
+[ext_resource type="Texture2D" uid="uid://2akcd0jy45ck" path="res://Assets/faces/raw_image/face13/8.png" id="3_ho1yo"]
+[ext_resource type="Texture2D" uid="uid://c74trqssi4hha" path="res://Assets/faces/raw_image/face13/10.png" id="4_p3mcc"]
+[ext_resource type="Texture2D" uid="uid://kj137o6dc2oe" path="res://Assets/faces/raw_image/face13/7.png" id="5_vitxx"]
+[ext_resource type="Texture2D" uid="uid://bry0l6y0mcap" path="res://Assets/faces/raw_image/face13/9.png" id="6_x4iod"]
+[ext_resource type="Texture2D" uid="uid://d2tqo1s8g71" path="res://Assets/faces/raw_image/face13/1.png" id="7_2tdad"]
+[ext_resource type="Texture2D" uid="uid://bl71afddj87rt" path="res://Assets/faces/raw_image/face13/2.png" id="8_3gno6"]
+[ext_resource type="Texture2D" uid="uid://4tshvmjkjbyx" path="res://Assets/faces/raw_image/face13/3.png" id="9_3dolb"]
+[ext_resource type="Texture2D" uid="uid://d28xyp6qh8aj2" path="res://Assets/faces/raw_image/face13/4.png" id="10_dkd5u"]
+[ext_resource type="Texture2D" uid="uid://ow3axxeed2fu" path="res://Assets/faces/raw_image/face13/5.png" id="11_amh1e"]
+[ext_resource type="Texture2D" uid="uid://cmel4vvnutphq" path="res://Assets/faces/raw_image/face13/6.png" id="12_s130u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nxl1f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_p3mcc")
+}],
+"loop": 1,
+"name": &"bounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_vitxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ho1yo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_x4iod")
+}],
+"loop": 1,
+"name": &"fast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2tdad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3gno6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3dolb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_dkd5u")
+}],
+"loop": 1,
+"name": &"mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_amh1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s130u")
+}],
+"loop": 1,
+"name": &"slow",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_35o2r")
+id = "plonk12"
+display_name = "Satellink"
+unlock_plinks_threshold = 500000000.0
+base_price = 500000000.0
+price_exponent = 1.2
+sell_value_fraction = 0.2
+base_plinks_per_bounce = 2500000.0
+mass = 9.0
+max_angular_velocity = 999.0
+shape_type = "Star"
+radius = 18.0
+star_points = 4
+inner_radius = 10.0
+scene = ExtResource("1_8oeok")
+sprite_frames = SubResource("SpriteFrames_nxl1f")
+components = Array[String](["OrbitComponent", "RandomPointComponent"])
+description = "Orbits the center of your plot."
+shop_icon = ExtResource("3_ho1yo")
+metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

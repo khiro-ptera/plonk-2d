@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://djla43pjy757r"
 
 [sub_resource type="Resource" id="Resource_io28c"]
 script = ExtResource("1_h5jg4")
-text = "You got 30 plinks, which means you've unlocked a new plonk!"
+text = "You got 25 plinks, which means you've unlocked a new plonk!"
 animation = "plonky4"
 metadata/_custom_type_script = "uid://djla43pjy757r"
 
