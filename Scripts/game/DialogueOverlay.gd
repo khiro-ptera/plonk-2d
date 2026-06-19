@@ -37,18 +37,10 @@ func _setup_character(data: DialogueData) -> void:
 	var center := Vector2(character_viewport.size) / 2.0
 	character_shape.position = center
 	character_sprite.position = center
-
-	var sprite_scale: float = data.character_radius / 50.0
-	character_sprite.scale = Vector2(sprite_scale, sprite_scale)
-
-	match data.character_shape:
-		"Circle":
-			character_shape.polygon = _make_circle_polygon(data.character_radius, 32)
-		"Star":
-			character_shape.polygon = _make_circle_polygon(data.character_radius, 32)
 	character_shape.color = Color.WHITE
 	if data.character_sprite_frames:
 		character_sprite.sprite_frames = data.character_sprite_frames
+	_apply_character_radius(data, data.character_radius)
 
 func _make_circle_polygon(radius: float, points: int) -> PackedVector2Array:
 	var verts := PackedVector2Array()
@@ -59,8 +51,22 @@ func _make_circle_polygon(radius: float, points: int) -> PackedVector2Array:
 
 func _on_line_changed(line: DialogueLine, _index: int, _total: int) -> void:
 	dialogue_text.text = line.text
+
+	var data: DialogueData = DialogueManager._current
+	var radius: float = line.radius if line.radius > 0.0 else data.character_radius
+	_apply_character_radius(data, radius)
+
 	if line.animation != "" and character_sprite.sprite_frames and character_sprite.sprite_frames.has_animation(line.animation):
 		character_sprite.play(line.animation)
+
+func _apply_character_radius(data: DialogueData, radius: float) -> void:
+	match data.character_shape:
+		"Circle":
+			character_shape.polygon = _make_circle_polygon(radius, 32)
+		"Star":
+			character_shape.polygon = _make_circle_polygon(radius, 32)
+	var sprite_scale: float = radius / 50.0
+	character_sprite.scale = Vector2(sprite_scale, sprite_scale)
 
 func _on_dialogue_ended(_data: DialogueData) -> void:
 	if not DialogueManager._is_active:

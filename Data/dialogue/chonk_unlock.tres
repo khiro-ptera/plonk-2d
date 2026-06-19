@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://b2fjf404qnwum"]
+
+[ext_resource type="Script" uid="uid://djla43pjy757r" path="res://Scripts/resources/DialogueLine.gd" id="1_h5jg4"]
+[ext_resource type="SpriteFrames" uid="uid://csqsjhk715pxs" path="res://Scenes/spriteframes/dialogue.tres" id="1_rhxdx"]
+[ext_resource type="Script" uid="uid://djpi4cndwb7he" path="res://Scripts/resources/DialogueData.gd" id="2_rhxdx"]
+
+[sub_resource type="Resource" id="Resource_7y5iv"]
+script = ExtResource("1_h5jg4")
+text = "Wow, that was fast!"
+animation = "plonky3"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_io28c"]
+script = ExtResource("1_h5jg4")
+text = "You got 30 plinks, which means you've unlocked a new plonk!"
+animation = "plonky4"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_moneo"]
+script = ExtResource("1_h5jg4")
+text = "Say hello to my little friend, the Chonk!"
+animation = "plonky1"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_1xtop"]
+script = ExtResource("1_h5jg4")
+text = "hello..."
+animation = "chonk1"
+radius = 60.0
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_dikqp"]
+script = ExtResource("1_h5jg4")
+text = "Your basic plonks are reliable, but this guy will put in a lot more work."
+animation = "plonky1"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_h0kdk"]
+script = ExtResource("1_h5jg4")
+text = "He's bigger, heavier, and scores you more plinks!"
+animation = "plonky3"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_ebke8"]
+script = ExtResource("1_h5jg4")
+text = "As you get more and more plinks, you'll unlock more and more plonks to help you out."
+animation = "plonky1"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_ki64f"]
+script = ExtResource("1_h5jg4")
+text = "Try buying a Chonk and see what he's made of!"
+animation = "plonky4"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_padk7"]
+script = ExtResource("1_h5jg4")
+text = "tungsten..."
+animation = "chonk1"
+radius = 60.0
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[resource]
+script = ExtResource("2_rhxdx")
+id = "chonk_unlock"
+character_sprite_frames = ExtResource("1_rhxdx")
+lines = Array[ExtResource("1_h5jg4")]([SubResource("Resource_7y5iv"), SubResource("Resource_io28c"), SubResource("Resource_moneo"), SubResource("Resource_1xtop"), SubResource("Resource_dikqp"), SubResource("Resource_h0kdk"), SubResource("Resource_ebke8"), SubResource("Resource_ki64f"), SubResource("Resource_padk7")])
+trigger_condition = {
+"plonk_id": "plonk1",
+"type": "plonk_unlocked"
+}
+metadata/_custom_type_script = "uid://djpi4cndwb7he"

@@ -1,8 +1,11 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://csqsjhk715pxs"]
 
 [ext_resource type="Texture2D" uid="uid://bs4l0clxqlpaa" path="res://Assets/faces/raw_image/plonky/faceplonk.png" id="1_ir425"]
+[ext_resource type="Texture2D" uid="uid://bfed07gveu7eg" path="res://Assets/faces/raw_image/face2/face3.png" id="1_lgshr"]
 [ext_resource type="Texture2D" uid="uid://c1cexxb0231hj" path="res://Assets/faces/raw_image/plonky/faceplonka.png" id="2_3ullx"]
+[ext_resource type="Texture2D" uid="uid://bo8kyfnjhxyvo" path="res://Assets/faces/raw_image/face2/face3a.png" id="2_xxl1v"]
 [ext_resource type="Texture2D" uid="uid://do7xnxltxvp2w" path="res://Assets/faces/raw_image/plonky/faceplonkb.png" id="3_ewwmh"]
+[ext_resource type="Texture2D" uid="uid://bkfn61ocmp8fa" path="res://Assets/faces/raw_image/face2/face3b.png" id="3_yk58t"]
 [ext_resource type="Texture2D" uid="uid://df8alwrgbp5vt" path="res://Assets/faces/raw_image/plonky/faceplonk2.png" id="4_lgshr"]
 [ext_resource type="Texture2D" uid="uid://dnl16smi3060n" path="res://Assets/faces/raw_image/plonky/faceplonk2a.png" id="5_xxl1v"]
 [ext_resource type="Texture2D" uid="uid://dj2b3xi4bps11" path="res://Assets/faces/raw_image/plonky/faceplonk2b.png" id="6_yk58t"]
@@ -15,6 +18,20 @@
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lgshr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xxl1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yk58t")
+}],
+"loop": 1,
+"name": &"chonk1",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_ir425")
