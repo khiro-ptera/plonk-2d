@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://3pk1wt6oue0j"]
+
+[ext_resource type="SpriteFrames" uid="uid://csqsjhk715pxs" path="res://Scenes/spriteframes/plonky.tres" id="1_dpgai"]
+[ext_resource type="Script" uid="uid://djpi4cndwb7he" path="res://Scripts/resources/DialogueData.gd" id="1_m4qgs"]
+
+[resource]
+script = ExtResource("1_m4qgs")
+id = "intro0"
+character_sprite_frames = ExtResource("1_dpgai")
+lines = Array[String](["Oh, hello!", "I don't think I've seen you around before.", "You look oddly... realistic.", "Sorry, sorry, that was rude!", "Ahem. My name is Plonky, and this is my domain.", "Plonkland!", "Welcome! I hope you enjoy your stay. There's plenty to do here.", "Come visit our famous Greyscale Gorge! Watch out for falling ronks.", "Take a dive at the Halftone Harbor and swim with the finks.", "Or enjoy an a-mazing picnic at Monochrome Meadows.", "Wait what? You're not here on vacation?", "That's fine, we've got plenty of jobs for our permanent residents. Let's see...", "You can be a plink farmer!", "What's a plink farmer? Well, they farm plinks. Duh.", "No, we don't have any other roles. I just checked PlinkedIn. Scarce job market I guess.", "Since you have no other options, I'll get you started.", "Here's your very own Plink Plot!", "How does one farm plinks? Well first, you'll need a plonk.", "Every single time a plonk of yours plinks, you'll get a plink. ", "If a plonk plinks with another plonk, each plonk will produce a plink!", "Does that make sense? No?", "Well, you seem like a bright individual, I'm sure you'll get the hang of it.", "Here's 15 plinks to buy your first plonk. A subsidy straight from my pocket.", "No need to thank me, and have fun plinking!"])
+trigger_condition = {
+"type": "manual"
+}
+metadata/_custom_type_script = "uid://djpi4cndwb7he"

@@ -19,6 +19,7 @@ func _ready() -> void:
 
 	# PlonkManager.spawn_plonk("plonk0", play_area.position + play_area.box_size / 2.0)
 	$UI._populate_shop()
+	DialogueManager.trigger_dialogue("intro0")
 	
 func _on_plonk_count_changed(current: int, maximum: int) -> void:
 	var label := $GameWorld/CountLabel

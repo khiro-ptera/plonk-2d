@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://csqsjhk715pxs"]
+
+[ext_resource type="Texture2D" uid="uid://bs4l0clxqlpaa" path="res://Assets/faces/raw_image/plonky/faceplonk.png" id="1_dkqw1"]
+[ext_resource type="Texture2D" uid="uid://c1cexxb0231hj" path="res://Assets/faces/raw_image/plonky/faceplonka.png" id="2_d5ww4"]
+[ext_resource type="Texture2D" uid="uid://do7xnxltxvp2w" path="res://Assets/faces/raw_image/plonky/faceplonkb.png" id="3_jeg3m"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dkqw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d5ww4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jeg3m")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
