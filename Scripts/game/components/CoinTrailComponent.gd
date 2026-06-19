@@ -33,4 +33,4 @@ func _drop_coin() -> void:
 	var trail_velocity: Vector2 = Vector2(cos(final_angle), sin(final_angle)) * 20.0  # slow speed
 
 	var plinks_value: float = _body.definition.base_plinks_per_bounce
-	coin.setup(trail_velocity, plinks_value)
+	coin.setup(trail_velocity, plinks_value, _body.definition.id)

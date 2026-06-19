@@ -7,11 +7,15 @@ extends CanvasLayer
 @onready var info_icon: TextureRect = $LeftSidebar/InfoPanel/InfoScroll/InfoContent/InfoIconContainer/InfoIcon
 @onready var info_title: Label = $LeftSidebar/InfoPanel/InfoScroll/InfoContent/InfoTitle
 @onready var info_description: Label = $LeftSidebar/InfoPanel/InfoScroll/InfoContent/InfoDescription
+@onready var info_stats: VBoxContainer = $LeftSidebar/InfoPanel/InfoScroll/InfoContent/InfoStats
 @onready var weather_label: Label = $LeftSidebar/WeatherPanel/WeatherScroll/WeatherContent/WeatherLabel
 
 @onready var legendary_panel: PanelContainer = $LeftSidebar/LegendaryPanel
 @onready var lock_overlay: Control = $LeftSidebar/LegendaryPanel/LockOverlay
 @onready var legendary_list: VBoxContainer = $LeftSidebar/LegendaryPanel/LegendaryContent/LegendaryScroll/LegendaryList
+
+var _hovered_data: PlonkData = null
+var _stats_refresh_timer: Timer
 
 func _ready() -> void:
 	_build_top_panel()
@@ -23,6 +27,11 @@ func _ready() -> void:
 	#_populate_shop()
 	GameState.legendary_unlocked.connect(_on_legendary_unlocked)
 	_update_legendary_lock_state()
+	_stats_refresh_timer = Timer.new()
+	_stats_refresh_timer.wait_time = 0.3
+	_stats_refresh_timer.timeout.connect(_on_stats_refresh)
+	add_child(_stats_refresh_timer)
+	_stats_refresh_timer.start()
 
 func _build_top_panel() -> void:
 	var panel := $TopPanel
@@ -184,6 +193,7 @@ func _build_left_sidebar() -> void:
 	
 
 func _show_plonk_info(data: PlonkData) -> void:
+	_hovered_data = data
 	info_icon.texture = data.shop_icon
 	if data.shop_icon:
 		var tex_size: Vector2 = data.shop_icon.get_size()
@@ -196,11 +206,46 @@ func _show_plonk_info(data: PlonkData) -> void:
 		info_icon.position = (Vector2(128, 128) - scaled_size) / 2.0
 	info_title.text = data.display_name
 	info_description.text = data.description
+	_update_info_stats(data)
 
 func _clear_plonk_info() -> void:
+	_hovered_data = null
 	info_icon.texture = null
 	info_title.text = ""
 	info_description.text = ""
+
+func _on_stats_refresh() -> void:
+	# print("ref")
+	if _hovered_data:
+		# print("refresh")
+		_update_info_stats(_hovered_data)
+
+func _update_info_stats(data: PlonkData) -> void:
+	for child in info_stats.get_children():
+		child.queue_free()
+
+	var owned_count: int = PlonkManager.get_count_in_play(data.id)
+	var per_window: float = StatsManager.get_plinks_per_window(data.id)
+	var total: float = StatsManager.get_plinks_total(data.id)
+
+	_add_stat_label("Owned: " + str(owned_count))
+	_add_stat_label("Plinks (last 10s): " + GameState.format_number(per_window))
+	_add_stat_label("Total plinks: " + GameState.format_number(total))
+	_add_stat_label("Start Speed: " + GameState.format_number(data.spawn_linear_speed))
+	_add_stat_label("Plinks/bounce: " + GameState.format_number(data.base_plinks_per_bounce))
+	_add_stat_label("Radius: " + GameState.format_number(data.radius))
+
+	var custom: Dictionary = StatsManager.get_custom_stats(data.id)
+	for stat_name in custom:
+		var label_name: String = stat_name.replace("_", " ").capitalize()
+		_add_stat_label(label_name + ": " + str(custom[stat_name]))
+
+func _add_stat_label(text: String) -> void:
+	var label := Label.new()
+	label.text = text
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD
+	info_stats.add_child(label)
 
 func _on_weather_started(weather_id: String) -> void:
 	weather_label.text = "Current weather: " + weather_id.capitalize()

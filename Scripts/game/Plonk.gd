@@ -126,7 +126,9 @@ func _on_body_entered(_body: Node) -> void:
 	$AnimatedSprite2D.play("bounce")
 	_bouncing = true
 	if definition:
-		GameState.add_plinks(definition.base_plinks_per_bounce * GameState.production_multiplier)
+		var amount: float = definition.base_plinks_per_bounce * GameState.production_multiplier
+		GameState.add_plinks(amount)
+		StatsManager.record_plinks(definition.id, amount)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "bounce":

@@ -129,6 +129,8 @@ func _show_teleport_line(start_pos: Vector2, end_pos: Vector2) -> void:
 
 	if hit_count > 0 and _body.definition:
 		GameState.add_plinks(hit_count * _body.definition.base_plinks_per_bounce)
+	
+	StatsManager.set_custom_stat(_body.definition.id, "plonks_hit_by_line", hit_count)
 
 	var timer := _body.get_tree().create_timer(1.0)
 	timer.timeout.connect(func():

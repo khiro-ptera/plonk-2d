@@ -21,6 +21,7 @@ PlonkManager="*uid://bru6faur0oe7b"
 GameState="*uid://815p2ox6btpl"
 WeatherManager="*uid://do2yk7v3rqb2j"
 DialogueManager="*uid://dhf7go2s6o4ax"
+StatsManager="*uid://ks11fpvxrx2k"
 
 [display]
 

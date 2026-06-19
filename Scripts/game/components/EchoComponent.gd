@@ -73,4 +73,4 @@ func _fire_at(target: RigidBody2D) -> void:
 	var dir: Vector2 = (target.global_position - _body.global_position).normalized()
 	projectile.global_position = _body.global_position + dir * (_body.definition.radius + 12.0)
 	var plinks_value: float = _body.definition.base_plinks_per_bounce * 0.1
-	Callable(projectile, "launch").bind(dir, plinks_value).call_deferred()
+	Callable(projectile, "launch").bind(dir, plinks_value, _body.definition.id).call_deferred()

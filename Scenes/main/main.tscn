@@ -175,6 +175,9 @@ horizontal_alignment = 1
 layout_mode = 2
 horizontal_alignment = 1
 
+[node name="InfoStats" type="VBoxContainer" parent="UI/LeftSidebar/InfoPanel/InfoScroll/InfoContent" unique_id=1051599036]
+layout_mode = 2
+
 [node name="WeatherPanel" type="PanelContainer" parent="UI/LeftSidebar" unique_id=1098242528]
 layout_mode = 2
 size_flags_vertical = 3

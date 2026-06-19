@@ -8,12 +8,15 @@ var _elapsed: float = 0.0
 var _start_radius: float = 8.0
 var _end_radius: float = 40.0
 
+var _source_plonk_id: String = ""
+
 func _ready() -> void:
 	set_physics_process(false)
 
-func launch(direction: Vector2, plinks_value: float) -> void:
+func launch(direction: Vector2, plinks_value: float, source_plonk_id: String = "") -> void:
 	_direction = direction
 	_plinks_value = plinks_value
+	_source_plonk_id = source_plonk_id
 	var shape := CircleShape2D.new()
 	shape.radius = _start_radius
 	$CollisionShape2D.shape = shape
@@ -42,6 +45,9 @@ func _on_body_entered(other: Node) -> void:
 	if other == get_parent().get_parent():
 		return
 	GameState.add_plinks(_plinks_value)
+	if _source_plonk_id != "":
+		StatsManager.record_plinks(_source_plonk_id, _plinks_value)
+	queue_free()
 	# reflect direction off the surface normal from the hit plonk
 	var to_other: Vector2 = (other.global_position - global_position).normalized()
 	_direction = _direction.bounce(to_other)
