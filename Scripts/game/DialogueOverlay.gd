@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		print("Next")
+		# print("Next")
 		DialogueManager.advance()
 
 func _on_dialogue_started(data: DialogueData) -> void:
@@ -35,22 +35,20 @@ func _on_dialogue_started(data: DialogueData) -> void:
 
 func _setup_character(data: DialogueData) -> void:
 	var center := Vector2(character_viewport.size) / 2.0
-	print(center)
 	character_shape.position = center
 	character_sprite.position = center
 
 	var sprite_scale: float = data.character_radius / 50.0
 	character_sprite.scale = Vector2(sprite_scale, sprite_scale)
-	
+
 	match data.character_shape:
 		"Circle":
 			character_shape.polygon = _make_circle_polygon(data.character_radius, 32)
 		"Star":
-			character_shape.polygon = _make_circle_polygon(data.character_radius, 32)  # swap for star generator if needed
+			character_shape.polygon = _make_circle_polygon(data.character_radius, 32)
 	character_shape.color = Color.WHITE
 	if data.character_sprite_frames:
 		character_sprite.sprite_frames = data.character_sprite_frames
-		character_sprite.play(data.character_animation)
 
 func _make_circle_polygon(radius: float, points: int) -> PackedVector2Array:
 	var verts := PackedVector2Array()
@@ -59,8 +57,10 @@ func _make_circle_polygon(radius: float, points: int) -> PackedVector2Array:
 		verts.append(Vector2(cos(a), sin(a)) * radius)
 	return verts
 
-func _on_line_changed(text: String, _index: int, _total: int) -> void:
-	dialogue_text.text = text
+func _on_line_changed(line: DialogueLine, _index: int, _total: int) -> void:
+	dialogue_text.text = line.text
+	if line.animation != "" and character_sprite.sprite_frames and character_sprite.sprite_frames.has_animation(line.animation):
+		character_sprite.play(line.animation)
 
 func _on_dialogue_ended(_data: DialogueData) -> void:
 	if not DialogueManager._is_active:

@@ -1,7 +1,7 @@
 extends Node
 
 signal dialogue_started(data: DialogueData)
-signal dialogue_line_changed(line_text: String, line_index: int, total_lines: int)
+signal dialogue_line_changed(line: DialogueLine, line_index: int, total_lines: int)
 signal dialogue_ended(data: DialogueData)
 signal all_dialogue_finished
 
@@ -83,9 +83,9 @@ func _start_next() -> void:
 	_show_current_line()
 
 func _show_current_line() -> void:
-	var text: String = _current.lines[_current_line]
-	dialogue_line_changed.emit(text, _current_line, _current.lines.size())
-
+	var line: DialogueLine = _current.lines[_current_line]
+	dialogue_line_changed.emit(line, _current_line, _current.lines.size())
+	
 func advance() -> void:
 	if not _is_active or _current == null:
 		return

@@ -32,7 +32,3 @@ func _input(event: InputEvent) -> void:
 			GameState.add_plinks(GameState.plinks)
 		if event.keycode == KEY_W:
 			WeatherManager._roll_weather()
-		if event.keycode == KEY_T:
-			DialogueManager.trigger_dialogue("test")
-		if event.keycode == KEY_Y:
-			DialogueManager.trigger_dialogue("test2")

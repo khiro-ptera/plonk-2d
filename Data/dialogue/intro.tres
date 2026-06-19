@@ -1,13 +1,158 @@
 [gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://3pk1wt6oue0j"]
 
-[ext_resource type="SpriteFrames" uid="uid://csqsjhk715pxs" path="res://Scenes/spriteframes/plonky.tres" id="1_dpgai"]
+[ext_resource type="SpriteFrames" uid="uid://csqsjhk715pxs" path="res://Scenes/spriteframes/dialogue.tres" id="1_0w7wy"]
 [ext_resource type="Script" uid="uid://djpi4cndwb7he" path="res://Scripts/resources/DialogueData.gd" id="1_m4qgs"]
+[ext_resource type="Script" uid="uid://djla43pjy757r" path="res://Scripts/resources/DialogueLine.gd" id="2_lq5y3"]
+
+[sub_resource type="Resource" id="Resource_7y5iv"]
+script = ExtResource("2_lq5y3")
+text = "Oh, hello!"
+animation = "plonky1"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_io28c"]
+script = ExtResource("2_lq5y3")
+text = "I don't think I've seen you around before."
+animation = ""
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_moneo"]
+script = ExtResource("2_lq5y3")
+text = "You look oddly... realistic."
+animation = "plonky2"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_1xtop"]
+script = ExtResource("2_lq5y3")
+text = "Sorry, sorry, that was rude!"
+animation = "plonky3"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_dikqp"]
+script = ExtResource("2_lq5y3")
+text = "Ahem. My name is Plonky, and this is my domain."
+animation = "plonky1"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_h0kdk"]
+script = ExtResource("2_lq5y3")
+text = "Plonkland!"
+animation = "plonky4"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_ebke8"]
+script = ExtResource("2_lq5y3")
+text = "Welcome! I hope you enjoy your stay. There's plenty to do here."
+animation = ""
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_ki64f"]
+script = ExtResource("2_lq5y3")
+text = "Come visit our famous Greyscale Gorge! Watch out for falling ronks."
+animation = "plonky1"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_padk7"]
+script = ExtResource("2_lq5y3")
+text = "Take a dive at the Halftone Harbor and swim with the finks."
+animation = ""
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_akswq"]
+script = ExtResource("2_lq5y3")
+text = "Or enjoy an a-mazing picnic at Monochrome Meadows."
+animation = ""
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_45xrl"]
+script = ExtResource("2_lq5y3")
+text = "Wait what? You're not here on vacation?"
+animation = "plonky3"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_4sqr6"]
+script = ExtResource("2_lq5y3")
+text = "That's fine, we've got plenty of jobs for our permanent residents. Let's see..."
+animation = "plonky1"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_0w7wy"]
+script = ExtResource("2_lq5y3")
+text = "Oooh, you can be a plink farmer!"
+animation = "plonky4"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_d7d6w"]
+script = ExtResource("2_lq5y3")
+text = "What's a plink farmer? Well, they farm plinks. Duh."
+animation = "plonky1"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_n8710"]
+script = ExtResource("2_lq5y3")
+text = "No, we don't have any other roles. I just checked PlinkedIn. Scarce job market I guess."
+animation = "plonky2"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_ckg2h"]
+script = ExtResource("2_lq5y3")
+text = "Since you have no other options, I'll get you started."
+animation = "plonky1"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_5rgei"]
+script = ExtResource("2_lq5y3")
+text = "Here's your very own Plink Plot!"
+animation = "plonky4"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_cn54d"]
+script = ExtResource("2_lq5y3")
+text = "How does one farm plinks? Well first, you'll need a plonk."
+animation = "plonky1"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_t8r38"]
+script = ExtResource("2_lq5y3")
+text = "Every single time a plonk of yours plinks, you'll get plinks."
+animation = ""
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_o4ndm"]
+script = ExtResource("2_lq5y3")
+text = "If a plonk plinks with another plonk, each plonk will produce plinks!"
+animation = "plonky3"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_50lr6"]
+script = ExtResource("2_lq5y3")
+text = "Does that make sense? No?"
+animation = "plonky2"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_ll5jx"]
+script = ExtResource("2_lq5y3")
+text = "Well, you seem like a bright individual, I'm sure you'll get the hang of it soon."
+animation = "plonky4"
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_bu6nd"]
+script = ExtResource("2_lq5y3")
+text = "Here's 15 plinks to buy your first plonk. A subsidy straight from my pocket."
+animation = ""
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_5xfh6"]
+script = ExtResource("2_lq5y3")
+text = "No need to thank me, and have fun plinking!"
+animation = "plonky1"
+metadata/_custom_type_script = "uid://djla43pjy757r"
 
 [resource]
 script = ExtResource("1_m4qgs")
 id = "intro0"
-character_sprite_frames = ExtResource("1_dpgai")
-lines = Array[String](["Oh, hello!", "I don't think I've seen you around before.", "You look oddly... realistic.", "Sorry, sorry, that was rude!", "Ahem. My name is Plonky, and this is my domain.", "Plonkland!", "Welcome! I hope you enjoy your stay. There's plenty to do here.", "Come visit our famous Greyscale Gorge! Watch out for falling ronks.", "Take a dive at the Halftone Harbor and swim with the finks.", "Or enjoy an a-mazing picnic at Monochrome Meadows.", "Wait what? You're not here on vacation?", "That's fine, we've got plenty of jobs for our permanent residents. Let's see...", "You can be a plink farmer!", "What's a plink farmer? Well, they farm plinks. Duh.", "No, we don't have any other roles. I just checked PlinkedIn. Scarce job market I guess.", "Since you have no other options, I'll get you started.", "Here's your very own Plink Plot!", "How does one farm plinks? Well first, you'll need a plonk.", "Every single time a plonk of yours plinks, you'll get a plink. ", "If a plonk plinks with another plonk, each plonk will produce a plink!", "Does that make sense? No?", "Well, you seem like a bright individual, I'm sure you'll get the hang of it.", "Here's 15 plinks to buy your first plonk. A subsidy straight from my pocket.", "No need to thank me, and have fun plinking!"])
+character_sprite_frames = ExtResource("1_0w7wy")
+lines = Array[ExtResource("2_lq5y3")]([SubResource("Resource_7y5iv"), SubResource("Resource_io28c"), SubResource("Resource_moneo"), SubResource("Resource_1xtop"), SubResource("Resource_dikqp"), SubResource("Resource_h0kdk"), SubResource("Resource_ebke8"), SubResource("Resource_ki64f"), SubResource("Resource_padk7"), SubResource("Resource_akswq"), SubResource("Resource_45xrl"), SubResource("Resource_4sqr6"), SubResource("Resource_0w7wy"), SubResource("Resource_d7d6w"), SubResource("Resource_n8710"), SubResource("Resource_ckg2h"), SubResource("Resource_5rgei"), SubResource("Resource_cn54d"), SubResource("Resource_t8r38"), SubResource("Resource_o4ndm"), SubResource("Resource_50lr6"), SubResource("Resource_ll5jx"), SubResource("Resource_bu6nd"), SubResource("Resource_5xfh6")])
 trigger_condition = {
 "type": "manual"
 }
