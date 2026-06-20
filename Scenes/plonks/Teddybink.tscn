@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://egvvwg67ngmr"]
+
+[ext_resource type="Script" uid="uid://mupoetp6duw2" path="res://Scripts/game/Plonk.gd" id="1_2ib07"]
+[ext_resource type="Script" uid="uid://7tpkfmbm8ogf" path="res://Scripts/game/components/HibernateComponent.gd" id="2_u2qqr"]
+
+[node name="Plonk" type="RigidBody2D" unique_id=1584245398]
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 5
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_2ib07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=127119477]
+
+[node name="ShapeSprite" type="Polygon2D" parent="." unique_id=999133757]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=129905004]
+
+[node name="HibernateComponent" type="Node" parent="." unique_id=869380192]
+script = ExtResource("2_u2qqr")
+metadata/_custom_type_script = "uid://7tpkfmbm8ogf"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

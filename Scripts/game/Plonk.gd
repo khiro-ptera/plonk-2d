@@ -123,8 +123,9 @@ func _play(anim: String) -> void:
 
 func _on_body_entered(_body: Node) -> void:
 	# print("bonk")
-	$AnimatedSprite2D.play("bounce")
-	_bouncing = true
+	if not animation_locked:
+		$AnimatedSprite2D.play("bounce")
+		_bouncing = true
 	if definition:
 		var amount: float = definition.base_plinks_per_bounce * GameState.production_multiplier
 		GameState.add_plinks(amount)

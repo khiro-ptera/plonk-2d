@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dfjy6wcjbfiww"]
+
+[ext_resource type="Texture2D" uid="uid://cth1re0qerp1h" path="res://Assets/projectiles/fluff/2.png" id="1_o531w"]
+[ext_resource type="Script" uid="uid://buhg27vqhw1l" path="res://Scripts/game/Fluff.gd" id="1_yy360"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+
+[node name="Fluff" type="Area2D" unique_id=1528298184]
+script = ExtResource("1_yy360")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1796397442]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1202686316]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_o531w")

@@ -1,0 +1,118 @@
+[gd_resource type="Resource" script_class="PlonkData" format=3 uid="uid://b4lcvgqmcom6y"]
+
+[ext_resource type="PackedScene" uid="uid://da4oskmoq6sl7" path="res://Scenes/plonks/Foxbomk.tscn" id="1_b7pwq"]
+[ext_resource type="Script" uid="uid://ddbs17v3m8ufw" path="res://Scripts/resources/PlonkData.gd" id="1_x7214"]
+[ext_resource type="Texture2D" uid="uid://bbpbcu0unfdvi" path="res://Assets/faces/raw_image/face18/9.png" id="3_gffbq"]
+[ext_resource type="Texture2D" uid="uid://cj226nyithc6t" path="res://Assets/faces/raw_image/face18/10.png" id="4_g28fc"]
+[ext_resource type="Texture2D" uid="uid://oqyfy24yn7gu" path="res://Assets/faces/raw_image/face18/11.png" id="5_vvfdx"]
+[ext_resource type="Texture2D" uid="uid://8fvbnt2ghbhi" path="res://Assets/faces/raw_image/face18/12.png" id="6_fqxni"]
+[ext_resource type="Texture2D" uid="uid://b11mrn6fctatn" path="res://Assets/faces/raw_image/face18/13.png" id="7_6rhu7"]
+[ext_resource type="Texture2D" uid="uid://b81l1trcivfn5" path="res://Assets/faces/raw_image/face18/14.png" id="8_srmx0"]
+[ext_resource type="Texture2D" uid="uid://dwx5fk1mq1eac" path="res://Assets/faces/raw_image/face18/7.png" id="9_10yg0"]
+[ext_resource type="Texture2D" uid="uid://dnala0wagpna" path="res://Assets/faces/raw_image/face18/8.png" id="10_xu62j"]
+[ext_resource type="Texture2D" uid="uid://5xpby2ekdh6o" path="res://Assets/faces/raw_image/face18/1.png" id="11_myewh"]
+[ext_resource type="Texture2D" uid="uid://yjhwfawkcqfq" path="res://Assets/faces/raw_image/face18/2.png" id="12_spdju"]
+[ext_resource type="Texture2D" uid="uid://bgxlc2lruif1r" path="res://Assets/faces/raw_image/face18/3.png" id="13_bgrvu"]
+[ext_resource type="Texture2D" uid="uid://d0ss2r30t1aa4" path="res://Assets/faces/raw_image/face18/4.png" id="14_noo6s"]
+[ext_resource type="Texture2D" uid="uid://vnc7vtgt8oli" path="res://Assets/faces/raw_image/face18/5.png" id="15_lixj3"]
+[ext_resource type="Texture2D" uid="uid://c4vuk86lp8x72" path="res://Assets/faces/raw_image/face18/6.png" id="16_jkd72"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5vn85"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s71nn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_g28fc")
+}],
+"loop": 1,
+"name": &"bounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_g28fc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vvfdx")
+}],
+"loop": 1,
+"name": &"effect1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fqxni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6rhu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_srmx0")
+}],
+"loop": 1,
+"name": &"effect2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_10yg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xu62j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gffbq")
+}],
+"loop": 1,
+"name": &"fast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_myewh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_spdju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bgrvu")
+}],
+"loop": 1,
+"name": &"mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_noo6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_lixj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jkd72")
+}],
+"loop": 1,
+"name": &"slow",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_x7214")
+id = "plonk13"
+display_name = "Foxbomk"
+unlock_plinks_threshold = 5000000000.0
+base_price = 5000000000.0
+price_exponent = 1.4
+sell_value_fraction = 0.2
+base_plinks_per_bounce = 50000000.0
+physics_material = SubResource("PhysicsMaterial_5vn85")
+spawn_linear_speed = 300.0
+scene = ExtResource("1_b7pwq")
+sprite_frames = SubResource("SpriteFrames_s71nn")
+components = Array[String](["ExplodeComponent"])
+description = "A volatile vulpine that EXPLODES when she's too excited."
+shop_icon = ExtResource("3_gffbq")
+metadata/_custom_type_script = "uid://ddbs17v3m8ufw"
