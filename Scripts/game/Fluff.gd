@@ -41,5 +41,7 @@ func _on_body_entered(other: Node) -> void:
 	GameState.add_plinks(plinks_gained)
 	if _source_plonk_id != "":
 		StatsManager.record_plinks(_source_plonk_id, plinks_gained)
+		StatsManager.change_custom_stat(_source_plonk_id, "fluff_collected", 1)
+
 
 	queue_free()

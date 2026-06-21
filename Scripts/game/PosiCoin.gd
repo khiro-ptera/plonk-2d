@@ -34,5 +34,6 @@ func _on_body_entered(other: Node) -> void:
 		return
 	if _source_plonk_id != "":
 		StatsManager.record_plinks(_source_plonk_id, _plinks_value)
+		StatsManager.change_custom_stat(_source_plonk_id, "coins_collected", 1)
 	GameState.add_plinks(_plinks_value)
 	queue_free()

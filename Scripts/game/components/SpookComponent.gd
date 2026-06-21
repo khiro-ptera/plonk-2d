@@ -47,5 +47,6 @@ func _on_plonk_entered(other: Node) -> void:
 	if other_body.linear_velocity.length() > 0.0:
 		other_body.linear_velocity = other_body.linear_velocity.normalized() * (current_speed + speed_boost)
 	else:
-		# if the other plonk is stationary give it a push in spoonk's direction
+		# if the other plonk is stationary give it a push
 		other_body.linear_velocity = _body.linear_velocity.normalized() * speed_boost
+	StatsManager.change_custom_stat(_body.definition.id, "plonks_spooked", 1)

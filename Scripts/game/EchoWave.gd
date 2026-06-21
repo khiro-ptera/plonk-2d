@@ -47,7 +47,8 @@ func _on_body_entered(other: Node) -> void:
 	GameState.add_plinks(_plinks_value)
 	if _source_plonk_id != "":
 		StatsManager.record_plinks(_source_plonk_id, _plinks_value)
-	queue_free()
+	StatsManager.change_custom_stat(_source_plonk_id, "echoes_bounced", 1)
+	# queue_free()
 	# reflect direction off the surface normal from the hit plonk
 	var to_other: Vector2 = (other.global_position - global_position).normalized()
 	_direction = _direction.bounce(to_other)

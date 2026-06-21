@@ -103,6 +103,6 @@ radius = 25.0
 scene = ExtResource("1_sweny")
 sprite_frames = SubResource("SpriteFrames_cylm0")
 components = Array[String](["HibernateComponent"])
-description = "Hibernates periodically, releasing valuable fluff!"
+description = "Hibernates periodically, releasing valuable popcorn fluff that slows other plonks."
 shop_icon = ExtResource("7_pu66e")
 metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

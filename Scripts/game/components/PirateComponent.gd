@@ -166,6 +166,7 @@ func _end_hook(needs_eject: bool = false) -> void:
 	_target = null
 	if is_instance_valid(_body):
 		_body.animation_locked = false
+	StatsManager.change_custom_stat(_body.definition.id, "plonks_hooked", 1)
 	_schedule_next()
 	
 func _on_failsafe() -> void:

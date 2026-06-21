@@ -66,3 +66,5 @@ func _start_redirect() -> void:
 		_redirecting = false
 	)
 	
+	StatsManager.change_custom_stat(_body.definition.id, "charges", 1)
+	

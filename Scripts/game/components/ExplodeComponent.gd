@@ -98,6 +98,7 @@ func _spawn_particles() -> void:
 
 func _push_nearby_plonks(stored_speed: float) -> void:
 	var push_strength: float = minf(stored_speed, _max_push_speed)
+	var counter = 0
 	for ap in PlonkManager.active:
 		var other: RigidBody2D = ap.node
 		if other == _body:
@@ -109,3 +110,6 @@ func _push_nearby_plonks(stored_speed: float) -> void:
 		var falloff: float = 1.0 - (dist / _explosion_radius)  # closer = stronger push
 		var push_dir: Vector2 = diff.normalized()
 		other.linear_velocity += push_dir * push_strength * falloff
+		counter += 1
+		
+	StatsManager.change_custom_stat(_body.definition.id, "plonks_exploded", counter)

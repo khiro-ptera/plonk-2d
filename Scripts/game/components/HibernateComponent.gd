@@ -49,6 +49,7 @@ func _end_hibernate() -> void:
 	if is_instance_valid(_body):
 		_body.animation_locked = false
 	_body.linear_velocity = _body.linear_velocity.normalized() * _body.definition.spawn_linear_speed
+	StatsManager.change_custom_stat(_body.definition.id, "naps_taken", 1)
 	_cooldown_timer.start(10.0)
 
 func _spawn_fluff() -> void:

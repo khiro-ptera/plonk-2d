@@ -38,5 +38,12 @@ func set_custom_stat(plonk_id: String, stat_name: String, value: Variant) -> voi
 		custom_stats[plonk_id] = {}
 	custom_stats[plonk_id][stat_name] = value
 
+# only for numerical
+func change_custom_stat(plonk_id: String, stat_name: String, value: Variant) -> void:
+	if not custom_stats.has(plonk_id):
+		custom_stats[plonk_id] = {}
+	var current: float = float(custom_stats[plonk_id].get(stat_name, 0.0))
+	custom_stats[plonk_id][stat_name] = current + float(value)
+
 func get_custom_stats(plonk_id: String) -> Dictionary:
 	return custom_stats.get(plonk_id, {})
