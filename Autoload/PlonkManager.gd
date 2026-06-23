@@ -8,24 +8,40 @@ class ActivePlonk:
 var definitions: Dictionary = {}   # id -> PlonkData
 var active: Array[ActivePlonk] = []
 
+
+const PLONK_PATHS: Array[String] = [
+	"res://Data/plonks/basic_plonk.tres",
+	"res://Data/plonks/bighornk.tres",
+	"res://Data/plonks/bunk.tres",
+	"res://Data/plonks/castlink.tres",
+	"res://Data/plonks/chonk.tres",
+	"res://Data/plonks/clink.tres",
+	"res://Data/plonks/foxbomk.tres",
+	"res://Data/plonks/newtonk.tres",
+	"res://Data/plonks/positronk.tres",
+	"res://Data/plonks/pteronk.tres",
+	"res://Data/plonks/purrrank.tres",
+	"res://Data/plonks/satellink.tres",
+	"res://Data/plonks/splink.tres",
+	"res://Data/plonks/spoonk.tres",
+	"res://Data/plonks/starplunk.tres",
+	"res://Data/plonks/teddybink.tres",
+	"res://Data/plonks/terachonk.tres",
+]
+
 func _ready() -> void:
 	_load_definitions()
 	GameState.total_clicks_changed.connect(func(_count): _check_legendary_unlocks())
 
 func _load_definitions() -> void:
-	var dir := DirAccess.open("res://data/plonks/")
-	if not dir:
-		return
-	dir.list_dir_begin()
-	var file_name := dir.get_next()
-	while file_name != "":
-		if file_name.ends_with(".tres"):
-			var res := load("res://Data/plonks/" + file_name) as PlonkData
-			if res:
-				definitions[res.id] = res
-				if res.unlock_plinks_threshold == 0.0:
-					GameState.unlock_plonk(res.id)  # available from start
-		file_name = dir.get_next()
+	for path in PLONK_PATHS:
+		var res := load(path) as PlonkData
+		if res:
+			definitions[res.id] = res
+			if res.unlock_plinks_threshold == 0.0:
+				GameState.unlock_plonk(res.id)  # available from start
+		else:
+			push_error("PlonkManager: failed to load " + path)
 
 func get_unlocked_definitions() -> Array:
 	var unlocked := []

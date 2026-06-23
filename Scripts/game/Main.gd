@@ -21,6 +21,8 @@ func _ready() -> void:
 	$UI._populate_shop()
 	DialogueManager.trigger_dialogue("intro0")
 	
+	# _print_tree("res://")
+	
 func _on_plonk_count_changed(current: int, maximum: int) -> void:
 	var label := $GameWorld/CountLabel
 	label.text = str(current) + " / " + str(maximum) + " plonks"

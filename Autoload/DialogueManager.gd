@@ -19,18 +19,18 @@ func _ready() -> void:
 	GameState.plonk_unlocked.connect(_on_plonk_unlocked)
 	GameState.legendary_unlocked.connect(_on_legendary_unlocked)
 
+const DIALOGUE_PATHS: Array[String] = [
+	"res://Data/dialogue/intro.tres",
+	"res://Data/dialogue/chonk_unlock.tres",
+]
+
 func _load_definitions() -> void:
-	var dir := DirAccess.open("res://Data/dialogue/")
-	if not dir:
-		return
-	dir.list_dir_begin()
-	var file_name := dir.get_next()
-	while file_name != "":
-		if file_name.ends_with(".tres"):
-			var res := load("res://Data/dialogue/" + file_name) as DialogueData
-			if res:
-				definitions[res.id] = res
-		file_name = dir.get_next()
+	for path in DIALOGUE_PATHS:
+		var res := load(path) as DialogueData
+		if res:
+			definitions[res.id] = res
+		else:
+			print("FAILED TO LOAD: ", path)
 
 func _on_plinks_changed(amount: float) -> void:
 	_check_triggers("plinks", amount)
