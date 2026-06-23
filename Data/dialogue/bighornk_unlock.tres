@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://bikfuyfijg8l7"]
+
+[ext_resource type="SpriteFrames" uid="uid://csqsjhk715pxs" path="res://Scenes/spriteframes/dialogue.tres" id="1_7n3is"]
+[ext_resource type="Script" uid="uid://djla43pjy757r" path="res://Scripts/resources/DialogueLine.gd" id="1_mpcd7"]
+[ext_resource type="Script" uid="uid://djpi4cndwb7he" path="res://Scripts/resources/DialogueData.gd" id="2_7n3is"]
+
+[sub_resource type="Resource" id="Resource_ve2yk"]
+script = ExtResource("1_mpcd7")
+text = "Hello, it's me Plonky! Just checking in again."
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[sub_resource type="Resource" id="Resource_5l8eh"]
+script = ExtResource("1_mpcd7")
+metadata/_custom_type_script = "uid://djla43pjy757r"
+
+[resource]
+script = ExtResource("2_7n3is")
+id = "bighornk_unlock"
+character_sprite_frames = ExtResource("1_7n3is")
+lines = Array[ExtResource("1_mpcd7")]([SubResource("Resource_ve2yk"), SubResource("Resource_5l8eh")])
+trigger_condition = {
+"plonk_id": "plonk4",
+"type": "plonk_unlock"
+}
+metadata/_custom_type_script = "uid://djpi4cndwb7he"

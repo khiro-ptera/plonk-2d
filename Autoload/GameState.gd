@@ -10,6 +10,13 @@ var plonk_speed_multiplier: float = 1.0
 var unlocked_plonk_ids: Array[String] = []
 var owned_legendary_ids: Array[String] = []
 
+var unlocked_legendary_ids: Array[String] = []
+signal legendary_unlocked(id: String)
+
+var total_clicks: int = 0
+signal total_clicks_changed(count: int)
+var _click_listeners: Array = []
+
 var play_area: Node2D = null
 
 func add_plinks(amount: float) -> void:
@@ -44,10 +51,21 @@ func format_number(value: float) -> String:
 	else:
 		return str(snappedf(value, 0.01))
 
-var unlocked_legendary_ids: Array[String] = []
-signal legendary_unlocked(id: String)
-
 func unlock_legendary(id: String) -> void:
 	if not unlocked_legendary_ids.has(id):
 		unlocked_legendary_ids.append(id)
 		legendary_unlocked.emit(id)
+
+func register_click_listener(listener: Object) -> void:
+	if not _click_listeners.has(listener):
+		_click_listeners.append(listener)
+
+func unregister_click_listener(listener: Object) -> void:
+	_click_listeners.erase(listener)
+
+func register_click() -> void:
+	total_clicks += 1
+	total_clicks_changed.emit(total_clicks)
+	for listener in _click_listeners:
+		if is_instance_valid(listener) and listener.has_method("_on_global_click"):
+			listener._on_global_click()

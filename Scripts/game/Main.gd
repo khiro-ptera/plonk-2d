@@ -27,6 +27,8 @@ func _on_plonk_count_changed(current: int, maximum: int) -> void:
 
 # REMOVE IN PROD: CHEAT/TESTS
 func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		GameState.register_click()
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_D:
 			GameState.add_plinks(GameState.plinks)

@@ -10,6 +10,7 @@ var active: Array[ActivePlonk] = []
 
 func _ready() -> void:
 	_load_definitions()
+	GameState.total_clicks_changed.connect(func(_count): _check_legendary_unlocks())
 
 func _load_definitions() -> void:
 	var dir := DirAccess.open("res://data/plonks/")
@@ -102,5 +103,7 @@ func _meets_condition(condition: Dictionary) -> bool:
 			var target_id: String = condition.get("plonk_id", "")
 			var amount: int = condition.get("amount", 0)
 			return get_count_in_play(target_id) >= amount
+		"total_clicks":
+			return GameState.total_clicks >= condition.get("amount", 0)
 		_:
 			return false
