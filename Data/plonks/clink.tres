@@ -1,0 +1,87 @@
+[gd_resource type="Resource" script_class="PlonkData" format=3 uid="uid://dn74lgn8cfmqh"]
+
+[ext_resource type="PackedScene" uid="uid://c8ehy7vegcjiu" path="res://Scenes/plonks/Clink.tscn" id="1_baihj"]
+[ext_resource type="Script" uid="uid://ddbs17v3m8ufw" path="res://Scripts/resources/PlonkData.gd" id="1_s1m5d"]
+[ext_resource type="Texture2D" uid="uid://buqbg2s3ms57n" path="res://Assets/faces/raw_image/lface2/6.png" id="3_qyp4k"]
+[ext_resource type="Texture2D" uid="uid://b3i6btrvebrbt" path="res://Assets/faces/raw_image/lface2/7.png" id="4_oqy3n"]
+[ext_resource type="Texture2D" uid="uid://dbxjtupj2v30a" path="res://Assets/faces/raw_image/lface2/4.png" id="5_0e16c"]
+[ext_resource type="Texture2D" uid="uid://v212aconkofr" path="res://Assets/faces/raw_image/lface2/5.png" id="6_6fc8l"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8f1se"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_luh3k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_oqy3n")
+}],
+"loop": 1,
+"name": &"bounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0e16c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6fc8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qyp4k")
+}],
+"loop": 1,
+"name": &"fast",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0e16c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6fc8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qyp4k")
+}],
+"loop": 1,
+"name": &"mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0e16c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6fc8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qyp4k")
+}],
+"loop": 1,
+"name": &"slow",
+"speed": 3.0
+}]
+
+[resource]
+script = ExtResource("1_s1m5d")
+id = "plonkl1"
+display_name = "Clink"
+unlock_plinks_threshold = 200.0
+base_price = 200.0
+sell_value_fraction = 0.0
+physics_material = SubResource("PhysicsMaterial_8f1se")
+spawn_linear_speed = 100.0
+radius = 20.0
+scene = ExtResource("1_baihj")
+sprite_frames = SubResource("SpriteFrames_luh3k")
+components = Array[String](["ClickComponent"])
+description = "Click it like a cookie"
+shop_icon = ExtResource("3_qyp4k")
+is_legendary = true
+unlock_condition = {
+"amount": 1000,
+"type": "total_clicks"
+}
+metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

@@ -4,8 +4,8 @@ func _ready() -> void:
 	var viewport_size := get_viewport().get_visible_rect().size
 	var bg := $GameWorld/Background
 	bg.color = Color(0.5, 0.5, 0.5, 1.0)
-	bg.position = Vector2.ZERO
-	bg.size = viewport_size
+	# bg.position = Vector2.ZERO
+	# bg.size = viewport_size
 	bg.z_index = -1
 	
 	var play_area := $GameWorld/PlayArea
@@ -25,10 +25,12 @@ func _on_plonk_count_changed(current: int, maximum: int) -> void:
 	var label := $GameWorld/CountLabel
 	label.text = str(current) + " / " + str(maximum) + " plonks"
 
-# REMOVE IN PROD: CHEAT/TESTS
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		GameState.register_click()
+		# print(GameState.total_clicks)
+	
+	# REMOVE IN PROD: CHEAT/TESTS
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_D:
 			GameState.add_plinks(GameState.plinks)

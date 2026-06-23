@@ -13,6 +13,7 @@ func _on_global_click() -> void:
 	GameState.add_plinks(reward)
 	if _body.definition:
 		StatsManager.record_plinks(_body.definition.id, reward)
+		StatsManager.change_custom_stat(_body.definition.id, "times clicked", 1)
 
 func _exit_tree() -> void:
 	GameState.unregister_click_listener(self)
