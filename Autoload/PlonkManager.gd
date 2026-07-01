@@ -27,6 +27,8 @@ const PLONK_PATHS: Array[String] = [
 	"res://Data/plonks/starplunk.tres",
 	"res://Data/plonks/teddybink.tres",
 	"res://Data/plonks/terachonk.tres",
+	"res://Data/plonks/spidonk.tres",
+	"res://Data/plonks/krokoronk.tres",
 ]
 
 func _ready() -> void:

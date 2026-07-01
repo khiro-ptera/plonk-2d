@@ -1,0 +1,108 @@
+[gd_resource type="Resource" script_class="PlonkData" format=3 uid="uid://dqsu2hg2ghcqx"]
+
+[ext_resource type="PackedScene" uid="uid://c6kcegyiqrhag" path="res://Scenes/plonks/Krokoronk.tscn" id="1_bcabv"]
+[ext_resource type="Script" uid="uid://ddbs17v3m8ufw" path="res://Scripts/resources/PlonkData.gd" id="1_ywpc0"]
+[ext_resource type="Texture2D" uid="uid://b834a4g71j4al" path="res://Assets/faces/raw_image/face20/10.png" id="3_eqa3i"]
+[ext_resource type="Texture2D" uid="uid://ol8ecdmwmfk0" path="res://Assets/faces/raw_image/face20/alt.png" id="5_bcabv"]
+[ext_resource type="Texture2D" uid="uid://dxvkvg4ireepx" path="res://Assets/faces/raw_image/face20/4.png" id="5_s1bq8"]
+[ext_resource type="Texture2D" uid="uid://f0dm1q12oe3v" path="res://Assets/faces/raw_image/face20/5.png" id="6_8ydv1"]
+[ext_resource type="Texture2D" uid="uid://dcci8bm50e1ln" path="res://Assets/faces/raw_image/face20/6.png" id="7_eb2wc"]
+[ext_resource type="Texture2D" uid="uid://chmgmwsm3qe2h" path="res://Assets/faces/raw_image/face20/1.png" id="8_5354d"]
+[ext_resource type="Texture2D" uid="uid://dai4g3km4j2jg" path="res://Assets/faces/raw_image/face20/2.png" id="9_tdslm"]
+[ext_resource type="Texture2D" uid="uid://ct7xwtxo137ua" path="res://Assets/faces/raw_image/face20/3.png" id="10_g4850"]
+[ext_resource type="Texture2D" uid="uid://djpnxjhrv0wh3" path="res://Assets/faces/raw_image/face20/7.png" id="11_lu2ck"]
+[ext_resource type="Texture2D" uid="uid://dwkgm0k03bga8" path="res://Assets/faces/raw_image/face20/8.png" id="12_wv2d2"]
+[ext_resource type="Texture2D" uid="uid://divfeyc3x3s17" path="res://Assets/faces/raw_image/face20/9.png" id="13_766f3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xxbv8"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfdl3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_eqa3i")
+}],
+"loop": 1,
+"name": &"bounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_eqa3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s1bq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eqa3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bcabv")
+}],
+"loop": 1,
+"name": &"effect",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_s1bq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8ydv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eb2wc")
+}],
+"loop": 1,
+"name": &"fast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_5354d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tdslm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_g4850")
+}],
+"loop": 1,
+"name": &"mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_lu2ck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wv2d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_766f3")
+}],
+"loop": 1,
+"name": &"slow",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_ywpc0")
+id = "plonk16"
+display_name = "Krokoronk"
+unlock_plinks_threshold = 6700000000001.0
+base_price = 6700000000001.0
+price_exponent = 1.5
+base_plinks_per_bounce = 20000000000.0
+mass = 3.0
+physics_material = SubResource("PhysicsMaterial_xxbv8")
+spawn_linear_speed = 280.0
+radius = 24.0
+scene = ExtResource("1_bcabv")
+sprite_frames = SubResource("SpriteFrames_xfdl3")
+components = Array[String](["QuakeComponent"])
+description = "Occasionally causes earthquakes and emits aftershocks."
+shop_icon = ExtResource("5_s1bq8")
+metadata/_custom_type_script = "uid://ddbs17v3m8ufw"

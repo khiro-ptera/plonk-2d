@@ -1,0 +1,89 @@
+[gd_resource type="Resource" script_class="PlonkData" format=3 uid="uid://bpfbp0ilulyra"]
+
+[ext_resource type="Script" uid="uid://ddbs17v3m8ufw" path="res://Scripts/resources/PlonkData.gd" id="1_5dyb3"]
+[ext_resource type="PackedScene" uid="uid://hc7qn4pmd4qh" path="res://Scenes/plonks/Spidonk.tscn" id="1_kg5an"]
+[ext_resource type="Texture2D" uid="uid://cflxdlet7nxsr" path="res://Assets/faces/raw_image/face19/3.png" id="3_63qxk"]
+[ext_resource type="Texture2D" uid="uid://dgsc453j2t7ku" path="res://Assets/faces/raw_image/face19/10.png" id="4_tcepn"]
+[ext_resource type="Texture2D" uid="uid://fvdk0ayo5nru" path="res://Assets/faces/raw_image/face19/4.png" id="5_gfddy"]
+[ext_resource type="Texture2D" uid="uid://b8uicvcvuhndh" path="res://Assets/faces/raw_image/face19/5.png" id="6_2x6of"]
+[ext_resource type="Texture2D" uid="uid://dtn5cnkh0edmb" path="res://Assets/faces/raw_image/face19/6.png" id="7_v25nd"]
+[ext_resource type="Texture2D" uid="uid://b6i8r3v2m8el7" path="res://Assets/faces/raw_image/face19/1.png" id="8_bel02"]
+[ext_resource type="Texture2D" uid="uid://c0ab3by7ulxat" path="res://Assets/faces/raw_image/face19/2.png" id="9_fj01n"]
+[ext_resource type="Texture2D" uid="uid://c6k6jieh3ia32" path="res://Assets/faces/raw_image/face19/7.png" id="10_3800t"]
+[ext_resource type="Texture2D" uid="uid://bpnkolabvunxp" path="res://Assets/faces/raw_image/face19/8.png" id="11_nnavo"]
+[ext_resource type="Texture2D" uid="uid://bme2rp6kq2m83" path="res://Assets/faces/raw_image/face19/9.png" id="12_lf1at"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vpsid"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bxcbt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tcepn")
+}],
+"loop": 1,
+"name": &"bounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_gfddy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2x6of")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v25nd")
+}],
+"loop": 1,
+"name": &"fast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_bel02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fj01n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_63qxk")
+}],
+"loop": 1,
+"name": &"mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_3800t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nnavo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lf1at")
+}],
+"loop": 1,
+"name": &"slow",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_5dyb3")
+id = "plonk15"
+display_name = "Spidonk"
+unlock_plinks_threshold = 800000000000.0
+base_price = 800000000000.0
+price_exponent = 1.4
+base_plinks_per_bounce = 888888880.0
+physics_material = SubResource("PhysicsMaterial_vpsid")
+spawn_linear_speed = 160.0
+radius = 18.0
+scene = ExtResource("1_kg5an")
+sprite_frames = SubResource("SpriteFrames_bxcbt")
+components = Array[String](["WebComponent"])
+description = "Webs walls, slowing other plonks and scoring plinks"
+shop_icon = ExtResource("3_63qxk")
+metadata/_custom_type_script = "uid://ddbs17v3m8ufw"
